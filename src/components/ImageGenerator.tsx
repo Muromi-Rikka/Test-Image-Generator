@@ -5,6 +5,9 @@ import { ColorPicker } from "./ColorPicker";
 import { PresetManager } from "./PresetManager";
 import { SaveButton } from "./SaveButton";
 
+// 十六进制颜色正则表达式
+const HEX_COLOR_REGEX = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i;
+
 export function ImageGenerator() {
   const { config, loading, updateConfig, save, imageRef } = useImageGenerator();
   const [showSaveModal, setShowSaveModal] = useState(false);
@@ -81,8 +84,37 @@ export function ImageGenerator() {
                   <Grid.Col span={6}>
                     <Button
                       onClick={() => {
+                        // 将十六进制颜色转换为RGB
+                        const hexToRgb = (hex: string) => {
+                          const result = HEX_COLOR_REGEX.exec(hex);
+                          return result
+                            ? {
+                                r: Number.parseInt(result[1], 16),
+                                g: Number.parseInt(result[2], 16),
+                                b: Number.parseInt(result[3], 16),
+                              }
+                            : { r: 0, g: 0, b: 0 };
+                        };
+
+                        // 计算相对亮度 (WCAG标准)
+                        const getLuminance = (r: number, g: number, b: number) => {
+                          const [rs, gs, bs] = [r, g, b].map((c) => {
+                            const s = c / 255;
+                            return s <= 0.03928 ? s / 12.92 : ((s + 0.055) / 1.055) ** 2.4;
+                          });
+                          return 0.2126 * rs + 0.7152 * gs + 0.0722 * bs;
+                        };
+
                         // 生成随机颜色
                         const randomColor = () => `#${Math.floor(Math.random() * 16777215).toString(16).padStart(6, "0")}`;
+
+                        // 生成高对比度文字颜色
+                        const getContrastTextColor = (bgColor: string) => {
+                          const rgb = hexToRgb(bgColor);
+                          const luminance = getLuminance(rgb.r, rgb.g, rgb.b);
+                          // 根据背景亮度选择黑色或白色文字
+                          return luminance > 0.5 ? "#000000" : "#ffffff";
+                        };
 
                         // 随机决定是否使用渐变
                         const isGradient = Math.random() > 0.5;
@@ -90,17 +122,20 @@ export function ImageGenerator() {
                         if (isGradient) {
                           // 生成两个随机渐变颜色
                           const gradientColors = [randomColor(), randomColor()];
+                          // 计算渐变平均颜色用于确定文字颜色
+                          const avgColor = gradientColors[0];
+                          const textColor = getContrastTextColor(avgColor);
                           updateConfig({
                             isGradient: true,
                             gradientColors,
-                            textColor: randomColor(),
+                            textColor,
                           });
                         }
                         else {
                           // 生成一个随机背景色
                           const backgroundColor = randomColor();
-                          // 确保文字颜色与背景色有足够对比度
-                          const textColor = randomColor();
+                          // 根据背景色自动选择高对比度文字颜色
+                          const textColor = getContrastTextColor(backgroundColor);
                           updateConfig({
                             isGradient: false,
                             backgroundColor,
