@@ -4,10 +4,11 @@ export async function downloadImage(element: HTMLElement | HTMLCanvasElement, fi
   // 使用snapdom保存图片
   try {
     // 直接使用snapdom.download方法下载图片
-    await snapdom.download(element, {
-      filename,
-      quality: 0.8,
-    });
+    const result = await snapdom(element);
+    await result.toJpg();
+    // eslint-disable-next-line ts/ban-ts-comment
+    // @ts-expect-error
+    await result.download({ filename, quality: 0.5, format: "jpg" });
   }
   catch (error) {
     console.error("Error saving image with snapdom:", error);
