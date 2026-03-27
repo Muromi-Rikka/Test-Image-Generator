@@ -1,4 +1,5 @@
-import { Box, Card, Grid, NumberInput, Stack, Text, Textarea } from "@mantine/core";
+import { Box, Button, Card, Grid, NumberInput, Stack, Text, Textarea } from "@mantine/core";
+import { useState } from "react";
 import { useImageGenerator } from "../hooks/useImageGenerator";
 import { ColorPicker } from "./ColorPicker";
 import { PresetManager } from "./PresetManager";
@@ -6,6 +7,7 @@ import { SaveButton } from "./SaveButton";
 
 export function ImageGenerator() {
   const { config, loading, updateConfig, save, imageRef } = useImageGenerator();
+  const [showSaveModal, setShowSaveModal] = useState(false);
 
   // 处理渐变背景样式
   const getBackgroundStyle = () => {
@@ -72,21 +74,75 @@ export function ImageGenerator() {
                 updateConfig={updateConfig}
               />
 
-              {/* 预设管理 */}
-              <PresetManager
-                currentConfig={config}
-                onLoadPreset={(preset) => {
-                  updateConfig({
-                    width: preset.width,
-                    height: preset.height,
-                    text: preset.text,
-                    backgroundColor: preset.backgroundColor,
-                    gradientColors: preset.gradientColors,
-                    textColor: preset.textColor,
-                    isGradient: !!preset.gradientColors && preset.gradientColors.length >= 2,
-                  });
-                }}
-              />
+              {/* 随机颜色和预设管理 */}
+              <Box>
+                {/* 按钮行 */}
+                <Grid gutter="sm" className="mb-4">
+                  <Grid.Col span={6}>
+                    <Button
+                      onClick={() => {
+                        // 生成随机颜色
+                        const randomColor = () => `#${Math.floor(Math.random() * 16777215).toString(16).padStart(6, "0")}`;
+
+                        // 随机决定是否使用渐变
+                        const isGradient = Math.random() > 0.5;
+
+                        if (isGradient) {
+                          // 生成两个随机渐变颜色
+                          const gradientColors = [randomColor(), randomColor()];
+                          updateConfig({
+                            isGradient: true,
+                            gradientColors,
+                            textColor: randomColor(),
+                          });
+                        }
+                        else {
+                          // 生成一个随机背景色
+                          const backgroundColor = randomColor();
+                          // 确保文字颜色与背景色有足够对比度
+                          const textColor = randomColor();
+                          updateConfig({
+                            isGradient: false,
+                            backgroundColor,
+                            textColor,
+                          });
+                        }
+                      }}
+                      className="w-full"
+                    >
+                      随机颜色组合
+                    </Button>
+                  </Grid.Col>
+                  <Grid.Col span={6}>
+                    <Button
+                      data-testid="save-preset-button"
+                      onClick={() => setShowSaveModal(true)}
+                      variant="outline"
+                      className="w-full"
+                    >
+                      保存当前设置为预设
+                    </Button>
+                  </Grid.Col>
+                </Grid>
+
+                {/* 预设列表 */}
+                <PresetManager
+                  currentConfig={config}
+                  onLoadPreset={(preset) => {
+                    updateConfig({
+                      width: preset.width,
+                      height: preset.height,
+                      text: preset.text,
+                      backgroundColor: preset.backgroundColor,
+                      gradientColors: preset.gradientColors,
+                      textColor: preset.textColor,
+                      isGradient: !!preset.gradientColors && preset.gradientColors.length >= 2,
+                    });
+                  }}
+                  showSaveModal={showSaveModal}
+                  onSaveModalClose={() => setShowSaveModal(false)}
+                />
+              </Box>
             </Stack>
           </Card>
         </Grid.Col>

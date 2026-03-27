@@ -1,16 +1,45 @@
 import type { ImageConfig, Preset } from "../types";
 import { Box, Button, Modal, Stack, Text } from "@mantine/core";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { addPreset, deletePreset, getPresets, updatePreset } from "../utils/storage";
 
 interface PresetManagerProps {
   currentConfig: ImageConfig;
   onLoadPreset: (preset: Preset) => void;
+  showSaveModal?: boolean;
+  onSaveModalClose?: () => void;
 }
 
-export function PresetManager({ currentConfig, onLoadPreset }: PresetManagerProps) {
+export function PresetManager({ currentConfig, onLoadPreset, showSaveModal = false, onSaveModalClose }: PresetManagerProps) {
   const [presets, setPresets] = useState<Preset[]>(() => getPresets());
-  const [showSaveModal, setShowSaveModal] = useState(false);
+  const [internalShowSaveModal, setInternalShowSaveModal] = useState(false);
+
+  // 当外部showSaveModal变化时，更新内部状态
+  useEffect(() => {
+    let timeoutId: ReturnType<typeof setTimeout>;
+
+    if (showSaveModal && !internalShowSaveModal) {
+      // 使用setTimeout来避免直接在useEffect中调用setState
+      timeoutId = setTimeout(() => {
+        setInternalShowSaveModal(true);
+      }, 0);
+    }
+
+    // 清理函数
+    return () => {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+    };
+  }, [showSaveModal, internalShowSaveModal]);
+
+  // 当内部模态框关闭时，通知外部
+  const handleCloseModal = () => {
+    setInternalShowSaveModal(false);
+    if (onSaveModalClose) {
+      onSaveModalClose();
+    }
+  };
 
   const handleSavePreset = () => {
     if (!currentConfig.text.trim())
@@ -50,7 +79,7 @@ export function PresetManager({ currentConfig, onLoadPreset }: PresetManagerProp
       setPresets([...presets, newPreset]);
     }
 
-    setShowSaveModal(false);
+    handleCloseModal();
   };
 
   const handleDeletePreset = (presetId: string) => {
@@ -67,18 +96,9 @@ export function PresetManager({ currentConfig, onLoadPreset }: PresetManagerProp
 
   return (
     <Box>
-      <Text size="sm" className="mb-2">预设管理</Text>
       <Stack gap="sm">
-        <Button
-          onClick={() => setShowSaveModal(true)}
-          variant="outline"
-          className="mt-2"
-        >
-          保存当前设置为预设
-        </Button>
-
         {presets.length > 0 && (
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mt-2">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
             {presets.map(preset => (
               <Box
                 key={preset.id}
@@ -131,8 +151,8 @@ export function PresetManager({ currentConfig, onLoadPreset }: PresetManagerProp
       </Stack>
 
       <Modal
-        opened={showSaveModal}
-        onClose={() => setShowSaveModal(false)}
+        opened={internalShowSaveModal}
+        onClose={handleCloseModal}
         title="保存预设"
       >
         <Stack gap="md">
@@ -141,7 +161,7 @@ export function PresetManager({ currentConfig, onLoadPreset }: PresetManagerProp
             <Text size="sm" className="mt-2 font-semibold">{currentConfig.text || "无文字"}</Text>
           </div>
           <div className="flex gap-sm">
-            <Button onClick={() => setShowSaveModal(false)} variant="outline">
+            <Button onClick={handleCloseModal} variant="outline">
               取消
             </Button>
             <Button onClick={handleSavePreset}>
