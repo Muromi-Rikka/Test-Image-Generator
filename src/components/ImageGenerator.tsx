@@ -1,4 +1,4 @@
-import { Box, Card, Grid, Slider, Stack, Text, Textarea } from "@mantine/core";
+import { Box, Card, Grid, NumberInput, Stack, Text, Textarea } from "@mantine/core";
 import { useEffect } from "react";
 import { useImageGenerator } from "../hooks/useImageGenerator";
 import { ColorPicker } from "./ColorPicker";
@@ -17,42 +17,35 @@ export function ImageGenerator() {
       <h1 className="text-3xl font-bold mb-6 text-center">测试图片生成器</h1>
 
       <Grid gutter="md">
-        {/* 左侧控制面板 */}
-        <Grid.Col span={4}>
+        {/* 左侧设置部分（主体） */}
+        <Grid.Col span={8}>
           <Card shadow="sm" className="mb-6 p-4">
             <h2 className="text-xl font-semibold mb-4">图片设置</h2>
 
             <Stack gap="md">
               {/* 尺寸设置 */}
-              <Box>
-                <Text size="sm" className="mb-2">
-                  宽度:
-                  {config.width}
-                  px
-                </Text>
-                <Slider
-                  value={config.width}
-                  min={200}
-                  max={2000}
-                  step={50}
-                  onChange={value => updateConfig({ width: value })}
-                />
-              </Box>
-
-              <Box>
-                <Text size="sm" className="mb-2">
-                  高度:
-                  {config.height}
-                  px
-                </Text>
-                <Slider
-                  value={config.height}
-                  min={200}
-                  max={2000}
-                  step={50}
-                  onChange={value => updateConfig({ height: value })}
-                />
-              </Box>
+              <Grid gutter="sm">
+                <Grid.Col span={6}>
+                  <Text size="sm" className="mb-2">宽度 (px)</Text>
+                  <NumberInput
+                    value={config.width}
+                    min={200}
+                    max={2000}
+                    step={50}
+                    onChange={value => updateConfig({ width: Number(value) || 200 })}
+                  />
+                </Grid.Col>
+                <Grid.Col span={6}>
+                  <Text size="sm" className="mb-2">高度 (px)</Text>
+                  <NumberInput
+                    value={config.height}
+                    min={200}
+                    max={2000}
+                    step={50}
+                    onChange={value => updateConfig({ height: Number(value) || 200 })}
+                  />
+                </Grid.Col>
+              </Grid>
 
               {/* 文字设置 */}
               <Box>
@@ -90,8 +83,8 @@ export function ImageGenerator() {
           </Card>
         </Grid.Col>
 
-        {/* 右侧预览和保存 */}
-        <Grid.Col span={8}>
+        {/* 右侧预览部分（缩小） */}
+        <Grid.Col span={4}>
           <Card shadow="sm" className="mb-6 p-4 flex flex-col items-center">
             <h2 className="text-xl font-semibold mb-4">预览</h2>
 
@@ -107,7 +100,7 @@ export function ImageGenerator() {
                       <img
                         src={previewUrl}
                         alt="Preview"
-                        className="max-w-full max-h-[500px] object-contain"
+                        className="max-w-full max-h-[300px] object-contain"
                       />
                     )
                   : (
