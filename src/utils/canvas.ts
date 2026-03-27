@@ -64,7 +64,7 @@ function splitTextIntoLines(ctx: CanvasRenderingContext2D, text: string, maxWidt
   return lines;
 }
 
-export async function downloadImage(element: HTMLElement | HTMLCanvasElement, filename: string = "test-image.png") {
+export async function downloadImage(element: HTMLElement | HTMLCanvasElement, filename: string = "test-image.jpg") {
   // 使用snapdom保存图片
   try {
     // 直接使用snapdom.download方法下载图片
@@ -86,7 +86,7 @@ export async function downloadImage(element: HTMLElement | HTMLCanvasElement, fi
           a.click();
           URL.revokeObjectURL(url);
         }
-      }, "image/png", 0.8);
+      }, "image/jpeg", 0.8);
     }
   }
 }

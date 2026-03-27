@@ -22,9 +22,16 @@ export function ColorPicker({ config, updateConfig }: ColorPickerProps) {
 
   const handleGradientColorChange = (index: number, color: string) => {
     const currentColors = config.gradientColors || [defaultGradientColor1, defaultGradientColor2];
-    const newGradientColors = [...currentColors];
-    newGradientColors[index] = color;
-    updateConfig({ gradientColors: newGradientColors });
+    // 确保数组长度至少为2
+    const safeColors = [...currentColors];
+    while (safeColors.length < 2) {
+      safeColors.push(defaultGradientColor2);
+    }
+    // 检查索引是否有效
+    if (index >= 0 && index < safeColors.length) {
+      safeColors[index] = color;
+      updateConfig({ gradientColors: safeColors });
+    }
   };
 
   return (
