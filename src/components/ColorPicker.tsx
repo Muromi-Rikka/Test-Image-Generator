@@ -14,22 +14,12 @@ export function ColorPicker({ config, updateConfig }: ColorPickerProps) {
 
   // 当config.gradientColors变化时，更新内部状态
   useEffect(() => {
-    let timeoutId: ReturnType<typeof setTimeout>;
-
     if (config.gradientColors && config.gradientColors.length >= 2) {
-      // 使用setTimeout来避免直接在useEffect中调用setState
-      timeoutId = setTimeout(() => {
-        setGradientColor1(config.gradientColors![0]);
-        setGradientColor2(config.gradientColors![1]);
-      }, 0);
+      // eslint-disable-next-line react-hooks-extra/no-direct-set-state-in-use-effect
+      setGradientColor1(config.gradientColors[0]);
+      // eslint-disable-next-line react-hooks-extra/no-direct-set-state-in-use-effect
+      setGradientColor2(config.gradientColors[1]);
     }
-
-    // 清理函数
-    return () => {
-      if (timeoutId) {
-        clearTimeout(timeoutId);
-      }
-    };
   }, [config.gradientColors]);
 
   const handleGradientToggle = (event: React.ChangeEvent<HTMLInputElement>) => {
