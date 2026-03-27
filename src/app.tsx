@@ -1,11 +1,10 @@
-import { Input } from "@mantine/core";
+import { ImageGenerator } from "./components/ImageGenerator";
 import "./globals.css";
 
 function App() {
   return (
-    <div className="bg-red-500 p-4">
-      <span className="icon-[mdi--user]"></span>
-      <Input placeholder="Input Component"></Input>
+    <div className="min-h-screen bg-gray-50">
+      <ImageGenerator />
     </div>
   );
 }
