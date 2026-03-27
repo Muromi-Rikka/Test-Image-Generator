@@ -14,12 +14,18 @@ importers:
       '@mantine/hooks':
         specifier: ^8.3.18
         version: 8.3.18(react@19.2.4)
+      '@zumer/snapdom':
+        specifier: ^2.7.0
+        version: 2.7.0
       react:
         specifier: ^19.2.4
         version: 19.2.4
       react-dom:
         specifier: ^19.2.4
         version: 19.2.4(react@19.2.4)
+      snapdom:
+        specifier: ^0.1.2
+        version: 0.1.2
     devDependencies:
       '@antfu/eslint-config':
         specifier: ^7.7.3
@@ -1080,6 +1086,9 @@ packages:
 
   '@vue/shared@3.5.31':
     resolution: {integrity: sha512-nBxuiuS9Lj5bPkPbWogPUnjxxWpkRniX7e5UBQDWl6Fsf4roq9wwV+cR7ezQ4zXswNvPIlsdj1slcLB7XCsRAw==}
+
+  '@zumer/snapdom@2.7.0':
+    resolution: {integrity: sha512-ZiELKzDszeFOazPQ/ExXzgtdoW9jADVjDjInr5XDAlVdCx0RbNsFiG7RLyM48XnA7EyCA9yTvmXSc3ElDrTRqA==}
 
   acorn-jsx@5.3.2:
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
@@ -2326,6 +2335,9 @@ packages:
     resolution: {integrity: sha512-stxByr12oeeOyY2BlviTNQlYV5xOj47GirPr4yA1hE9JCtxfQN0+tVbkxwCtYDQWhEKWFHsEK48ORg5jrouCAg==}
     engines: {node: '>=20'}
 
+  snapdom@0.1.2:
+    resolution: {integrity: sha512-N9cvtICohWdAByQoF972u5BsSUhhEWPTvK11SXAt6mMHjfltXtEBy58ucsag/LF70JXEg7WvaaKH11qq1w6+GA==}
+
   source-map-js@1.2.1:
     resolution: {integrity: sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==}
     engines: {node: '>=0.10.0'}
@@ -3528,6 +3540,8 @@ snapshots:
       '@vue/shared': 3.5.31
 
   '@vue/shared@3.5.31': {}
+
+  '@zumer/snapdom@2.7.0': {}
 
   acorn-jsx@5.3.2(acorn@8.16.0):
     dependencies:
@@ -5007,6 +5021,8 @@ snapshots:
     dependencies:
       ansi-styles: 6.2.3
       is-fullwidth-code-point: 5.1.0
+
+  snapdom@0.1.2: {}
 
   source-map-js@1.2.1: {}
 

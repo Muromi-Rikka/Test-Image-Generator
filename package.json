@@ -38,6 +38,7 @@
   "dependencies": {
     "@mantine/core": "^8.3.18",
     "@mantine/hooks": "^8.3.18",
+    "@zumer/snapdom": "^2.7.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4"
   },

@@ -1,16 +1,24 @@
 import { Box, Card, Grid, NumberInput, Stack, Text, Textarea } from "@mantine/core";
-import { useEffect } from "react";
 import { useImageGenerator } from "../hooks/useImageGenerator";
 import { ColorPicker } from "./ColorPicker";
 import { PresetManager } from "./PresetManager";
 import { SaveButton } from "./SaveButton";
 
 export function ImageGenerator() {
-  const { config, previewUrl, loading, updateConfig, generate, save } = useImageGenerator();
+  const { config, loading, updateConfig, save, imageRef } = useImageGenerator();
 
-  useEffect(() => {
-    generate();
-  }, [config, generate]);
+  // 处理渐变背景样式
+  const getBackgroundStyle = () => {
+    if (config.isGradient && config.gradientColors && config.gradientColors.length >= 2) {
+      const gradientColors = config.gradientColors.join(", ");
+      return {
+        background: `linear-gradient(135deg, ${gradientColors})`,
+      };
+    }
+    return {
+      backgroundColor: config.backgroundColor,
+    };
+  };
 
   return (
     <div className="w-full max-w-7xl mx-auto p-4">
@@ -32,7 +40,7 @@ export function ImageGenerator() {
                     min={200}
                     max={2000}
                     step={50}
-                    onChange={value => updateConfig({ width: Number(value) || 200 })}
+                    onChange={value => updateConfig({ width: typeof value === "number" ? value : Number(value) || 200 })}
                   />
                 </Grid.Col>
                 <Grid.Col span={6}>
@@ -42,7 +50,7 @@ export function ImageGenerator() {
                     min={200}
                     max={2000}
                     step={50}
-                    onChange={value => updateConfig({ height: Number(value) || 200 })}
+                    onChange={value => updateConfig({ height: typeof value === "number" ? value : Number(value) || 200 })}
                   />
                 </Grid.Col>
               </Grid>
@@ -92,22 +100,31 @@ export function ImageGenerator() {
               {loading
                 ? (
                     <div className="w-full h-64 flex items-center justify-center">
-                      <Text>生成中...</Text>
+                      <Text>保存中...</Text>
                     </div>
                   )
-                : previewUrl
-                  ? (
-                      <img
-                        src={previewUrl}
-                        alt="Preview"
-                        className="max-w-full max-h-[300px] object-contain"
-                      />
-                    )
-                  : (
-                      <div className="w-full h-64 flex items-center justify-center">
-                        <Text>请调整设置生成图片</Text>
-                      </div>
-                    )}
+                : (
+                    <div
+                      ref={imageRef}
+                      style={{
+                        ...getBackgroundStyle(),
+                        width: `${config.width}px`,
+                        height: `${config.height}px`,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        color: config.textColor,
+                        fontSize: "48px",
+                        fontWeight: "bold",
+                        textAlign: "center",
+                        padding: "20px",
+                        wordBreak: "break-word",
+                      }}
+                      className="max-w-full max-h-[300px] object-contain overflow-auto"
+                    >
+                      {config.text}
+                    </div>
+                  )}
             </div>
 
             <SaveButton
