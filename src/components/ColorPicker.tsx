@@ -1,7 +1,7 @@
 import type { ImageConfig } from "../types";
 import { Box, ColorInput, Stack, Switch, Text } from "@mantine/core";
 import * as React from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface ColorPickerProps {
   config: ImageConfig;
@@ -11,6 +11,26 @@ interface ColorPickerProps {
 export function ColorPicker({ config, updateConfig }: ColorPickerProps) {
   const [gradientColor1, setGradientColor1] = useState(config.gradientColors?.[0] || "#ff0000");
   const [gradientColor2, setGradientColor2] = useState(config.gradientColors?.[1] || "#0000ff");
+
+  // 当config.gradientColors变化时，更新内部状态
+  useEffect(() => {
+    let timeoutId: ReturnType<typeof setTimeout>;
+
+    if (config.gradientColors && config.gradientColors.length >= 2) {
+      // 使用setTimeout来避免直接在useEffect中调用setState
+      timeoutId = setTimeout(() => {
+        setGradientColor1(config.gradientColors![0]);
+        setGradientColor2(config.gradientColors![1]);
+      }, 0);
+    }
+
+    // 清理函数
+    return () => {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+    };
+  }, [config.gradientColors]);
 
   const handleGradientToggle = (event: React.ChangeEvent<HTMLInputElement>) => {
     const checked = event.target.checked;
