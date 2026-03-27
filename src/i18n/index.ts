@@ -3,6 +3,7 @@ import { initReactI18next } from "react-i18next";
 
 import en from "./en.json";
 import zh from "./zh.json";
+import "./types"; // 导入类型定义
 
 const resources = {
   en: {
