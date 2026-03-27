@@ -1,7 +1,7 @@
 {
   "name": "test-image-generator",
   "type": "module",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "packageManager": "pnpm@10.33.0",
   "description": "A simple yet powerful image generator tool built with React, Mantine UI, and Tailwind CSS",
   "author": {
