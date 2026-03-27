@@ -1,0 +1,39 @@
+{
+  "app": {
+    "title": "测试图片生成器"
+  },
+  "imageGenerator": {
+    "settings": "图片设置",
+    "width": "宽度 (px)",
+    "height": "高度 (px)",
+    "text": "文字内容",
+    "textPlaceholder": "请输入图片文字",
+    "randomColors": "随机颜色组合",
+    "savePreset": "保存当前设置为预设"
+  },
+  "colorPicker": {
+    "title": "颜色设置",
+    "textColor": "文字颜色",
+    "gradientBackground": "渐变色背景",
+    "backgroundColor": "背景颜色",
+    "gradientColors": "渐变颜色",
+    "color1": "颜色 1",
+    "color2": "颜色 2"
+  },
+  "presetManager": {
+    "savePreset": "保存预设",
+    "presetInfo": "预设将以当前文字内容作为标识",
+    "noText": "无文字",
+    "cancel": "取消",
+    "save": "保存",
+    "delete": "删除"
+  },
+  "saveButton": {
+    "save": "保存图片到本地",
+    "formatInfo": "图片将以JPG格式压缩保存"
+  },
+  "preview": {
+    "title": "预览",
+    "saving": "保存中..."
+  }
+}

@@ -2,6 +2,7 @@ import { createTheme, DEFAULT_THEME, MantineProvider, mergeMantineTheme } from "
 import * as React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./app";
+import "./i18n";
 
 const rootEl = document.getElementById("root");
 

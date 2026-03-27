@@ -39,8 +39,10 @@
     "@mantine/core": "^8.3.18",
     "@mantine/hooks": "^8.3.18",
     "@zumer/snapdom": "^2.7.0",
+    "i18next": "^25.10.10",
     "react": "^19.2.4",
-    "react-dom": "^19.2.4"
+    "react-dom": "^19.2.4",
+    "react-i18next": "^16.6.6"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^7.7.3",

@@ -1,7 +1,9 @@
 import { Box, Button, Card, Grid, NumberInput, Stack, Text, Textarea } from "@mantine/core";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useImageGenerator } from "../hooks/useImageGenerator";
 import { ColorPicker } from "./ColorPicker";
+import { LanguageSelector } from "./LanguageSelector";
 import { PresetManager } from "./PresetManager";
 import { SaveButton } from "./SaveButton";
 
@@ -11,6 +13,7 @@ const HEX_COLOR_REGEX = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i;
 export function ImageGenerator() {
   const { config, loading, updateConfig, save, imageRef } = useImageGenerator();
   const [showSaveModal, setShowSaveModal] = useState(false);
+  const { t } = useTranslation();
 
   // 处理渐变背景样式
   const getBackgroundStyle = () => {
@@ -27,19 +30,22 @@ export function ImageGenerator() {
 
   return (
     <div className="w-full max-w-7xl mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-6 text-center">测试图片生成器</h1>
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-3xl font-bold">{t("app.title")}</h1>
+        <LanguageSelector />
+      </div>
 
       <Grid gutter="md">
         {/* 左侧设置部分（主体） */}
         <Grid.Col span={8}>
           <Card shadow="sm" className="mb-6 p-4">
-            <h2 className="text-xl font-semibold mb-4">图片设置</h2>
+            <h2 className="text-xl font-semibold mb-4">{t("imageGenerator.settings")}</h2>
 
             <Stack gap="md">
               {/* 尺寸设置 */}
               <Grid gutter="sm">
                 <Grid.Col span={6}>
-                  <Text size="sm" className="mb-2">宽度 (px)</Text>
+                  <Text size="sm" className="mb-2">{t("imageGenerator.width")}</Text>
                   <NumberInput
                     value={config.width}
                     min={200}
@@ -49,7 +55,7 @@ export function ImageGenerator() {
                   />
                 </Grid.Col>
                 <Grid.Col span={6}>
-                  <Text size="sm" className="mb-2">高度 (px)</Text>
+                  <Text size="sm" className="mb-2">{t("imageGenerator.height")}</Text>
                   <NumberInput
                     value={config.height}
                     min={200}
@@ -62,11 +68,11 @@ export function ImageGenerator() {
 
               {/* 文字设置 */}
               <Box>
-                <Text size="sm" className="mb-2">文字内容</Text>
+                <Text size="sm" className="mb-2">{t("imageGenerator.text")}</Text>
                 <Textarea
                   value={config.text}
                   onChange={e => updateConfig({ text: e.target.value })}
-                  placeholder="请输入图片文字"
+                  placeholder={t("imageGenerator.textPlaceholder")}
                   minRows={3}
                 />
               </Box>
@@ -145,7 +151,7 @@ export function ImageGenerator() {
                       }}
                       className="w-full"
                     >
-                      随机颜色组合
+                      {t("imageGenerator.randomColors")}
                     </Button>
                   </Grid.Col>
                   <Grid.Col span={6}>
@@ -155,7 +161,7 @@ export function ImageGenerator() {
                       variant="outline"
                       className="w-full"
                     >
-                      保存当前设置为预设
+                      {t("imageGenerator.savePreset")}
                     </Button>
                   </Grid.Col>
                 </Grid>
@@ -185,13 +191,13 @@ export function ImageGenerator() {
         {/* 右侧预览部分（缩小） */}
         <Grid.Col span={4}>
           <Card shadow="sm" className="mb-6 p-4 flex flex-col items-center">
-            <h2 className="text-xl font-semibold mb-4">预览</h2>
+            <h2 className="text-xl font-semibold mb-4">{t("preview.title")}</h2>
 
             <div className="relative border border-gray-200 rounded-lg overflow-hidden mb-6 bg-gray-100">
               {loading
                 ? (
                     <div className="w-full h-64 flex items-center justify-center">
-                      <Text>保存中...</Text>
+                      <Text>{t("preview.saving")}</Text>
                     </div>
                   )
                 : (

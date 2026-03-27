@@ -1,6 +1,7 @@
 import type { ImageConfig } from "../types";
 import { Box, ColorInput, Stack, Switch, Text } from "@mantine/core";
 import * as React from "react";
+import { useTranslation } from "react-i18next";
 
 interface ColorPickerProps {
   config: ImageConfig;
@@ -11,6 +12,7 @@ export function ColorPicker({ config, updateConfig }: ColorPickerProps) {
   // 使用默认颜色作为回退
   const defaultGradientColor1 = "#ff0000";
   const defaultGradientColor2 = "#0000ff";
+  const { t } = useTranslation();
 
   const handleGradientToggle = (event: React.ChangeEvent<HTMLInputElement>) => {
     const checked = event.target.checked;
@@ -36,12 +38,12 @@ export function ColorPicker({ config, updateConfig }: ColorPickerProps) {
 
   return (
     <Box>
-      <Text size="sm" className="mb-2">颜色设置</Text>
+      <Text size="sm" className="mb-2">{t("colorPicker.title")}</Text>
 
       <Stack gap="sm">
         {/* 文字颜色 */}
         <Box>
-          <Text size="sm" className="mb-2">文字颜色</Text>
+          <Text size="sm" className="mb-2">{t("colorPicker.textColor")}</Text>
           <ColorInput
             value={config.textColor}
             onChange={color => updateConfig({ textColor: color })}
@@ -52,7 +54,7 @@ export function ColorPicker({ config, updateConfig }: ColorPickerProps) {
 
         {/* 背景类型切换 */}
         <Box className="flex items-center justify-between">
-          <Text size="sm">渐变色背景</Text>
+          <Text size="sm">{t("colorPicker.gradientBackground")}</Text>
           <Switch
             checked={config.isGradient}
             onChange={handleGradientToggle}
@@ -63,7 +65,7 @@ export function ColorPicker({ config, updateConfig }: ColorPickerProps) {
         {!config.isGradient
           ? (
               <Box>
-                <Text size="sm" className="mb-2">背景颜色</Text>
+                <Text size="sm" className="mb-2">{t("colorPicker.backgroundColor")}</Text>
                 <ColorInput
                   value={config.backgroundColor}
                   onChange={color => updateConfig({ backgroundColor: color })}
@@ -74,10 +76,10 @@ export function ColorPicker({ config, updateConfig }: ColorPickerProps) {
             )
           : (
               <Box>
-                <Text size="sm" className="mb-2">渐变颜色</Text>
+                <Text size="sm" className="mb-2">{t("colorPicker.gradientColors")}</Text>
                 <Stack gap="sm">
                   <Box>
-                    <Text size="xs" className="mb-1">颜色 1</Text>
+                    <Text size="xs" className="mb-1">{t("colorPicker.color1")}</Text>
                     <ColorInput
                       value={config.gradientColors?.[0] || defaultGradientColor1}
                       onChange={color => handleGradientColorChange(0, color)}
@@ -86,7 +88,7 @@ export function ColorPicker({ config, updateConfig }: ColorPickerProps) {
                     />
                   </Box>
                   <Box>
-                    <Text size="xs" className="mb-1">颜色 2</Text>
+                    <Text size="xs" className="mb-1">{t("colorPicker.color2")}</Text>
                     <ColorInput
                       value={config.gradientColors?.[1] || defaultGradientColor2}
                       onChange={color => handleGradientColorChange(1, color)}

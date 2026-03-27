@@ -1,6 +1,7 @@
 import type { ImageConfig, Preset } from "../types";
 import { Box, Button, Modal, Stack, Text } from "@mantine/core";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { addPreset, deletePreset, getPresets, updatePreset } from "../utils/storage";
 
 interface PresetManagerProps {
@@ -13,6 +14,7 @@ interface PresetManagerProps {
 export function PresetManager({ currentConfig, onLoadPreset, showSaveModal = false, onSaveModalClose }: PresetManagerProps) {
   const [presets, setPresets] = useState<Preset[]>(() => getPresets());
   const [internalShowSaveModal, setInternalShowSaveModal] = useState(false);
+  const { t } = useTranslation();
 
   // 当外部showSaveModal变化时，更新内部状态
   useEffect(() => {
@@ -119,7 +121,7 @@ export function PresetManager({ currentConfig, onLoadPreset, showSaveModal = fal
                       size="sm"
                       className="text-center font-bold break-words"
                     >
-                      {preset.text || "无文字"}
+                      {preset.text || t("presetManager.noText")}
                     </Text>
                   </div>
                 </div>
@@ -140,7 +142,7 @@ export function PresetManager({ currentConfig, onLoadPreset, showSaveModal = fal
                         handleDeletePreset(preset.id);
                       }}
                     >
-                      删除
+                      {t("presetManager.delete")}
                     </Button>
                   </div>
                 </div>
@@ -153,19 +155,19 @@ export function PresetManager({ currentConfig, onLoadPreset, showSaveModal = fal
       <Modal
         opened={internalShowSaveModal}
         onClose={handleCloseModal}
-        title="保存预设"
+        title={t("presetManager.savePreset")}
       >
         <Stack gap="md">
           <div className="p-4 bg-gray-50 rounded">
-            <Text size="sm">预设将以当前文字内容作为标识</Text>
-            <Text size="sm" className="mt-2 font-semibold">{currentConfig.text || "无文字"}</Text>
+            <Text size="sm">{t("presetManager.presetInfo")}</Text>
+            <Text size="sm" className="mt-2 font-semibold">{currentConfig.text || t("presetManager.noText")}</Text>
           </div>
           <div className="flex gap-sm">
             <Button onClick={handleCloseModal} variant="outline">
-              取消
+              {t("presetManager.cancel")}
             </Button>
             <Button onClick={handleSavePreset}>
-              保存
+              {t("presetManager.save")}
             </Button>
           </div>
         </Stack>

@@ -1,0 +1,39 @@
+{
+  "app": {
+    "title": "Test Image Generator"
+  },
+  "imageGenerator": {
+    "settings": "Image Settings",
+    "width": "Width (px)",
+    "height": "Height (px)",
+    "text": "Text Content",
+    "textPlaceholder": "Please enter image text",
+    "randomColors": "Random Color Combination",
+    "savePreset": "Save Current Settings as Preset"
+  },
+  "colorPicker": {
+    "title": "Color Settings",
+    "textColor": "Text Color",
+    "gradientBackground": "Gradient Background",
+    "backgroundColor": "Background Color",
+    "gradientColors": "Gradient Colors",
+    "color1": "Color 1",
+    "color2": "Color 2"
+  },
+  "presetManager": {
+    "savePreset": "Save Preset",
+    "presetInfo": "Preset will be identified by current text content",
+    "noText": "No Text",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete"
+  },
+  "saveButton": {
+    "save": "Save Image to Local",
+    "formatInfo": "Image will be saved in JPG format with compression"
+  },
+  "preview": {
+    "title": "Preview",
+    "saving": "Saving..."
+  }
+}
