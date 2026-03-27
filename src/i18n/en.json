@@ -7,6 +7,7 @@
     "width": "Width (px)",
     "height": "Height (px)",
     "text": "Text Content",
+    "textSize": "Text Size (px)",
     "textPlaceholder": "Please enter image text",
     "randomColors": "Random Color Combination",
     "savePreset": "Save Current Settings as Preset"

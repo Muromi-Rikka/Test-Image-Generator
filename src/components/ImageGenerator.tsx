@@ -48,20 +48,16 @@ export function ImageGenerator() {
                   <Text size="sm" className="mb-2">{t("imageGenerator.width")}</Text>
                   <NumberInput
                     value={config.width}
-                    min={200}
-                    max={2000}
                     step={50}
-                    onChange={value => updateConfig({ width: typeof value === "number" ? value : Number(value) || 200 })}
+                    onChange={value => updateConfig({ width: typeof value === "number" ? value : Number(value) || 1 })}
                   />
                 </Grid.Col>
                 <Grid.Col span={6}>
                   <Text size="sm" className="mb-2">{t("imageGenerator.height")}</Text>
                   <NumberInput
                     value={config.height}
-                    min={200}
-                    max={2000}
                     step={50}
-                    onChange={value => updateConfig({ height: typeof value === "number" ? value : Number(value) || 200 })}
+                    onChange={value => updateConfig({ height: typeof value === "number" ? value : Number(value) || 1 })}
                   />
                 </Grid.Col>
               </Grid>
@@ -74,6 +70,17 @@ export function ImageGenerator() {
                   onChange={e => updateConfig({ text: e.target.value })}
                   placeholder={t("imageGenerator.textPlaceholder")}
                   minRows={3}
+                />
+              </Box>
+
+              {/* 文字大小设置 */}
+              <Box>
+                <Text size="sm" className="mb-2">{t("imageGenerator.textSize")}</Text>
+                <NumberInput
+                  value={config.textSize}
+                  min={1}
+                  step={1}
+                  onChange={value => updateConfig({ textSize: typeof value === "number" ? value : Number(value) || 1 })}
                 />
               </Box>
 
@@ -177,6 +184,7 @@ export function ImageGenerator() {
                       backgroundColor: preset.backgroundColor,
                       gradientColors: preset.gradientColors,
                       textColor: preset.textColor,
+                      textSize: preset.textSize,
                       isGradient: !!preset.gradientColors && preset.gradientColors.length >= 2,
                     });
                   }}
@@ -193,7 +201,7 @@ export function ImageGenerator() {
           <Card shadow="sm" className="mb-6 p-4 flex flex-col items-center">
             <h2 className="text-xl font-semibold mb-4">{t("preview.title")}</h2>
 
-            <div className="relative border border-gray-200 rounded-lg overflow-hidden mb-6 bg-gray-100">
+            <div className="relative border border-gray-200 overflow-hidden mb-6 bg-gray-100">
               {loading
                 ? (
                     <div className="w-full h-64 flex items-center justify-center">
@@ -211,11 +219,11 @@ export function ImageGenerator() {
                         alignItems: "center",
                         justifyContent: "center",
                         color: config.textColor,
-                        fontSize: "48px",
+                        fontSize: `${config.textSize}px`,
                         fontWeight: "bold",
                         textAlign: "center",
-                        padding: "20px",
                         wordBreak: "break-word",
+                        overflow: "hidden",
                       }}
                       className="max-w-full max-h-[300px] object-contain overflow-auto"
                     >

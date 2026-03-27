@@ -10,6 +10,7 @@ export function useImageGenerator() {
     backgroundColor: "#ffffff",
     textColor: "#000000",
     isGradient: false,
+    textSize: 48,
   });
 
   const [loading, setLoading] = useState(false);

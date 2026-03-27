@@ -7,6 +7,7 @@ export interface Preset {
   backgroundColor: string;
   gradientColors?: string[];
   textColor: string;
+  textSize: number;
 }
 
 export interface ImageConfig {
@@ -17,4 +18,5 @@ export interface ImageConfig {
   gradientColors?: string[];
   textColor: string;
   isGradient: boolean;
+  textSize: number;
 }

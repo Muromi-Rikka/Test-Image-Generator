@@ -59,6 +59,7 @@ export function PresetManager({ currentConfig, onLoadPreset, showSaveModal = fal
         backgroundColor: currentConfig.backgroundColor,
         gradientColors: currentConfig.gradientColors,
         textColor: currentConfig.textColor,
+        textSize: currentConfig.textSize,
       };
 
       updatePreset(updatedPreset);
@@ -76,6 +77,7 @@ export function PresetManager({ currentConfig, onLoadPreset, showSaveModal = fal
         backgroundColor: currentConfig.backgroundColor,
         gradientColors: currentConfig.gradientColors,
         textColor: currentConfig.textColor,
+        textSize: currentConfig.textSize,
       });
 
       setPresets([...presets, newPreset]);

@@ -7,6 +7,7 @@
     "width": "宽度 (px)",
     "height": "高度 (px)",
     "text": "文字内容",
+    "textSize": "文字大小 (px)",
     "textPlaceholder": "请输入图片文字",
     "randomColors": "随机颜色组合",
     "savePreset": "保存当前设置为预设"
