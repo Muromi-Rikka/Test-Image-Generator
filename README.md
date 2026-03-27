@@ -1,31 +1,24 @@
-# @trapar-waves/react-mantine-tailwind
+# Test Image Generator
 
-![npm version](https://img.shields.io/npm/v/@trapar-waves/react-mantine-tailwind)
-![npm dm](https://img.shields.io/npm/dm/@trapar-waves/react-mantine-tailwind)
-![License](https://img.shields.io/github/license/Trapar-waves/react-mantine-tailwind)
-![GitHub last commit](https://img.shields.io/github/last-commit/Trapar-waves/react-mantine-tailwind)
-![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/Trapar-waves/react-mantine-tailwind/release.yml)
-![Renovate](https://img.shields.io/badge/renovate-enabled-blue)
+![License](https://img.shields.io/github/license/Muromi-Rikka/Test-Image-Generator)
+![GitHub last commit](https://img.shields.io/github/last-commit/Muromi-Rikka/Test-Image-Generator)
 
 ---
 
 [中文](./readme/README-CN.md) | [日本語](./readme/README-JP.md) | [Русский язык](./readme/README-RU.md)
 
-> A React template integrating Mantine UI and Tailwind CSS for modern web development.
+> A simple yet powerful image generator tool built with React, Mantine UI, and Tailwind CSS.
 
 ## ✨ Features
 
-- **Modern UI Framework:** Built using React (v19) for a component-driven, declarative interface.
-- **Rich Component Library:** Integrates with Mantine UI (`@mantine/core` and `@mantine/hooks`) providing pre-built UI elements and utility hooks.
-- **Utility-First Styling:** Employs Tailwind CSS along with `@tailwindcss/postcss`, enabling flexible and rapid styling while maintaining consistency.
-- **PostCSS Integration:** Leverages PostCSS plugins like `postcss-import`, `autoprefixer`, and `postcss-simple-vars` for advanced CSS processing.
-- **Type Safety:** Utilizes TypeScript (v5.9.x) to enhance code reliability and provide robust type checking during development.
-- **Fast Development Workflow:** Uses Rsbuild (`@rsbuild/core` and `@rsbuild/plugin-react`) for optimized builds and efficient development server performance.
-- **Icon Support:** Includes `@iconify/json` and `@iconify/tailwind` for scalable and customizable iconography.
-- **Consistent Design Language:** Combines `postcss-preset-mantine` and `tailwind-preset-mantine` for seamless integration between Mantine and Tailwind styles.
-- **Focus on Code Quality:** Includes ESLint with `@antfu/eslint-config` for linting and enforcing best practices in the codebase.
-- **Git Hooks:** Integrated with Husky and `lint-staged` for automated code quality checks on commit.
-- **Automated Releases:** Utilizes GitHub Actions for automated releases and changelog generation.
+- **Image Customization:** Generate images with custom dimensions, text content, and colors.
+- **Color Management:** Support for solid colors and gradient backgrounds with automatic contrast text color.
+- **Random Color Generator:** Generate random color combinations with high contrast text for optimal readability.
+- **Preset Management:** Save and load custom presets for quick access to frequently used settings.
+- **Multi-language Support:** Available in English, Chinese, Japanese, and Russian.
+- **Image Export:** Save generated images to local device in JPG format.
+- **Real-time Preview:** Instantly see changes as you adjust settings.
+- **Responsive Design:** Works seamlessly on different screen sizes.
 
 ## 💻 Tech Stack
 
@@ -35,10 +28,8 @@
 - **Language:** TypeScript (v5.9.x)
 - **CSS Processing:** PostCSS with plugins like `autoprefixer` and `postcss-simple-vars`
 - **Linting:** ESLint with `@antfu/eslint-config`
-- **State Management:** Zustand
-- **Routing:** Tanstack Router
-- **Data Fetching:** Tanstack Query (React Query)
-- **Table Component:** Tanstack Table
+- **Internationalization:** i18next, react-i18next
+- **Image Processing:** @zumer/snapdom
 
 See the [package.json](./package.json) for a full list of dependencies.
 
@@ -60,15 +51,14 @@ npm -v
 
 ### Installation
 
-Run script
+Clone the repository and install dependencies:
 
 ```bash
-pnpm create trapar-waves
-```
+# Clone the repository
+git clone https://github.com/Muromi-Rikka/Test-Image-Generator.git
+cd Test-Image-Generator
 
-Install dependencies
-
-```bash
+# Install dependencies
 npm install
 yarn install
 pnpm install
@@ -114,6 +104,17 @@ yarn lint
 pnpm lint
 ```
 
+## 🎨 Usage
+
+1. **Set Dimensions:** Adjust the width and height of your image.
+2. **Add Text:** Enter the text you want to display on the image.
+3. **Customize Colors:** Choose between solid color or gradient background, and set text color.
+4. **Generate Random Colors:** Click the "Random Color Combination" button for automatic color suggestions.
+5. **Save Presets:** Save your current settings as a preset for future use.
+6. **Load Presets:** Select from saved presets to quickly apply previous settings.
+7. **Preview:** See the real-time preview of your image.
+8. **Save Image:** Click "Save Image to Local" to download the generated image.
+
 ## 🤝 Contributing
 
 Contributions are welcome and greatly appreciated! Please follow these steps to contribute:
@@ -137,6 +138,5 @@ This project is licensed under the MIT License - see the [LICENSE](./LICENSE) fi
 
 ## 🔗 Links
 
-- **Repository:** [https://github.com/Trapar-waves/react-mantine-tailwind](https://github.com/Trapar-waves/react-mantine-tailwind)
-- **Homepage:** [https://github.com/Trapar-waves/react-mantine-tailwind](https://github.com/Trapar-waves/react-mantine-tailwind)
-- **Issues:** [https://github.com/Trapar-waves/react-mantine-tailwind/issues](https://github.com/Trapar-waves/react-mantine-tailwind/issues)
+- **Repository:** [https://github.com/Muromi-Rikka/Test-Image-Generator](https://github.com/Muromi-Rikka/Test-Image-Generator)
+- **Issues:** [https://github.com/Muromi-Rikka/Test-Image-Generator/issues](https://github.com/Muromi-Rikka/Test-Image-Generator/issues)

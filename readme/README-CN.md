@@ -1,31 +1,24 @@
-# @trapar-waves/react-mantine-tailwind
+# 测试图片生成器
 
-![npm version](https://img.shields.io/npm/v/@trapar-waves/react-mantine-tailwind)
-![npm dm](https://img.shields.io/npm/dm/@trapar-waves/react-mantine-tailwind)
-![License](https://img.shields.io/github/license/Trapar-waves/react-mantine-tailwind)
-![GitHub last commit](https://img.shields.io/github/last-commit/Trapar-waves/react-mantine-tailwind)
-![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/Trapar-waves/react-mantine-tailwind/release.yml)
-![Renovate](https://img.shields.io/badge/renovate-enabled-blue)
+![License](https://img.shields.io/github/license/Muromi-Rikka/Test-Image-Generator)
+![GitHub last commit](https://img.shields.io/github/last-commit/Muromi-Rikka/Test-Image-Generator)
 
 ---
 
 [English](../README.md) | [日本語](./README-JP.md) | [Русский язык](./README-RU.md)
 
-> 一个融合React、Mantine UI和Tailwind CSS的项目，用于构建现代化Web应用。
+> 一个简单而强大的图片生成工具，使用React、Mantine UI和Tailwind CSS构建。
 
 ## ✨ 特性
 
-- **现代UI框架:** 基于React (v19)构建，采用组件驱动的声明式界面设计。
-- **丰富组件库:** 集成Mantine UI（`@mantine/core`和`@mantine/hooks`），提供预构建UI元素和实用钩子。
-- **工具优先样式:** 采用Tailwind CSS配合`@tailwindcss/postcss`，实现灵活快速的样式开发同时保持一致性。
-- **PostCSS集成:** 利用PostCSS插件如`postcss-import`、`autoprefixer`和`postcss-simple-vars`进行高级CSS处理。
-- **类型安全:** 使用TypeScript (v5.9.x)增强代码可靠性，在开发过程中提供强大的类型检查。
-- **快速开发流程:** 使用Rsbuild（`@rsbuild/core`和`@rsbuild/plugin-react`）实现优化构建和高效开发服务器性能。
-- **图标支持:** 包含`@iconify/json`和`@iconify/tailwind`，提供可扩展和可定制的图标库。
-- **一致的设计语言:** 结合`postcss-preset-mantine`和`tailwind-preset-mantine`，实现Mantine和Tailwind样式的无缝集成。
-- **注重代码质量:** 包含ESLint和`@antfu/eslint-config`，用于代码检查和执行最佳实践。
-- **Git Hooks:** 集成Husky和`lint-staged`，在提交时自动进行代码质量检查。
-- **自动化发布:** 利用GitHub Actions进行自动化发布和变更日志生成。
+- **图片定制:** 生成具有自定义尺寸、文本内容和颜色的图片。
+- **颜色管理:** 支持纯色和渐变背景，自动生成对比文本颜色。
+- **随机颜色生成:** 生成随机颜色组合，自动确保文本与背景的高对比度，提高可读性。
+- **预设管理:** 保存和加载自定义预设，快速访问常用设置。
+- **多语言支持:** 支持英语、中文、日语和俄语。
+- **图片导出:** 将生成的图片以JPG格式保存到本地设备。
+- **实时预览:** 调整设置时即时查看效果。
+- **响应式设计:** 在不同屏幕尺寸上无缝工作。
 
 ## 💻 技术栈
 
@@ -35,10 +28,8 @@
 - **语言:** TypeScript (v5.9.x)
 - **CSS处理:** PostCSS及插件如`autoprefixer`和`postcss-simple-vars`
 - **代码检查:** ESLint配合`@antfu/eslint-config`
-- **状态管理:** Zustand
-- **路由:** Tanstack Router
-- **数据获取:** Tanstack Query (React Query)
-- **表格组件:** Tanstack Table
+- **国际化:** i18next, react-i18next
+- **图片处理:** @zumer/snapdom
 
 完整依赖列表参见[package.json](../package.json)。
 
@@ -60,15 +51,14 @@ npm -v
 
 ### 安装步骤
 
-运行脚本
+克隆仓库并安装依赖：
 
 ```bash
-pnpm create trapar-waves
-```
+# 克隆仓库
+git clone https://github.com/Muromi-Rikka/Test-Image-Generator.git
+cd Test-Image-Generator
 
-安装依赖
-
-```bash
+# 安装依赖
 npm install
 yarn install
 pnpm install
@@ -114,6 +104,17 @@ yarn lint
 pnpm lint
 ```
 
+## 🎨 使用方法
+
+1. **设置尺寸:** 调整图片的宽度和高度。
+2. **添加文本:** 输入要在图片上显示的文本。
+3. **自定义颜色:** 选择纯色或渐变背景，并设置文本颜色。
+4. **生成随机颜色:** 点击"随机颜色组合"按钮获取自动颜色建议。
+5. **保存预设:** 将当前设置保存为预设，以便将来使用。
+6. **加载预设:** 从保存的预设中选择，快速应用之前的设置。
+7. **预览:** 实时查看图片效果。
+8. **保存图片:** 点击"保存图片到本地"下载生成的图片。
+
 ## 🤝 贡献指南
 
 欢迎贡献，非常感谢您的支持！请按照以下步骤进行贡献：
@@ -130,13 +131,12 @@ pnpm lint
 
 该项目采用MIT许可证 - 详情请见[LICENSE](../LICENSE)文件。
 
-## 👤 Author
+## 👤 作者
 
 - **Rikka:** (admin@rikka.cc)
 - **GitHub Profile:** [Muromi-Rikka](https://github.com/Muromi-Rikka)
 
-## 🔗 Links
+## 🔗 链接
 
-- **仓库:** [https://github.com/Trapar-waves/react-mantine-tailwind](https://github.com/Trapar-waves/react-mantine-tailwind)
-- **主页:** [https://github.com/Trapar-waves/react-mantine-tailwind](https://github.com/Trapar-waves/react-mantine-tailwind)
-- **问题:** [https://github.com/Trapar-waves/react-mantine-tailwind/issues](https://github.com/Trapar-waves/react-mantine-tailwind/issues)
+- **仓库:** [https://github.com/Muromi-Rikka/Test-Image-Generator](https://github.com/Muromi-Rikka/Test-Image-Generator)
+- **问题:** [https://github.com/Muromi-Rikka/Test-Image-Generator/issues](https://github.com/Muromi-Rikka/Test-Image-Generator/issues)

@@ -1,31 +1,24 @@
-# @trapar-waves/react-mantine-tailwind
+# Генератор тестовых изображений
 
-![npm version](https://img.shields.io/npm/v/@trapar-waves/react-mantine-tailwind)
-![npm dm](https://img.shields.io/npm/dm/@trapar-waves/react-mantine-tailwind)
-![License](https://img.shields.io/github/license/Trapar-waves/react-mantine-tailwind)
-![GitHub last commit](https://img.shields.io/github/last-commit/Trapar-waves/react-mantine-tailwind)
-![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/Trapar-waves/react-mantine-tailwind/release.yml)
-![Renovate](https://img.shields.io/badge/renovate-enabled-blue)
+![License](https://img.shields.io/github/license/Muromi-Rikka/Test-Image-Generator)
+![GitHub last commit](https://img.shields.io/github/last-commit/Muromi-Rikka/Test-Image-Generator)
 
 ---
 
 [English](../README.md) | [中文](./README-CN.md) | [日本語](./README-JP.md)
 
-> Проект, сочетающий React, Mantine UI и Tailwind CSS для создания современных веб-приложений.
+> Простой, но мощный инструмент для генерации изображений, построенный с использованием React, Mantine UI и Tailwind CSS.
 
 ## ✨ Особенности
 
-- **Современный UI-фреймворк:** Строится с использованием React (v19) для компонентно-ориентированного декларативного интерфейса.
-- **Богатая библиотека компонентов:** Интегрируется с Mantine UI (`@mantine/core` и `@mantine/hooks`), предоставляя предварительно созданные элементы интерфейса и утилитарные хуки.
-- **Стилизация с упором на утилиты:** Использует Tailwind CSS вместе с `@tailwindcss/postcss`, обеспечивая гибкую и быструю стилизацию при сохранении согласованности.
-- **Интеграция с PostCSS:** Получает преимущества от плагинов PostCSS, таких как `postcss-import`, `autoprefixer` и `postcss-simple-vars`, для расширенной обработки CSS.
-- **Безопасность типов:** Использует TypeScript (v5.9.x) для повышения надежности кода и обеспечения надежной проверки типов во время разработки.
-- **Быстрый рабочий процесс разработки:** Использует Rsbuild (`@rsbuild/core` и `@rsbuild/plugin-react`) для оптимизированных сборок и эффективной производительности сервера разработки.
-- **Поддержка иконок:** Включает `@iconify/json` и `@iconify/tailwind` для масштабируемой и настраиваемой иконографии.
-- **Согласованный дизайн:** Комбинирует `postcss-preset-mantine` и `tailwind-preset-mantine` для бесперебойной интеграции стилей Mantine и Tailwind.
-- **Фокус на качестве кода:** Включает ESLint с `@antfu/eslint-config` для линтинга и соблюдения лучших практик в кодовой базе.
-- **Git Hooks:** Интегрирован с Husky и `lint-staged` для автоматических проверок качества кода при коммите.
-- **Автоматические релизы:** Использует GitHub Actions для автоматических релизов и генерации журналов изменений.
+- **Настройка изображения:** Генерация изображений с пользовательскими размерами, текстовым содержимым и цветами.
+- **Управление цветами:** Поддержка сплошных цветов и градиентных фонов с автоматическим генерированием контрастного текстового цвета.
+- **Генератор случайных цветов:** Генерация случайных цветовых комбинаций с высоким контрастом текста для оптимальной читаемости.
+- **Управление пресетами:** Сохранение и загрузка пользовательских пресетов для быстрого доступа к часто используемым настройкам.
+- **Мультиязычная поддержка:** Доступно на английском, китайском, японском и русском языках.
+- **Экспорт изображений:** Сохранение сгенерированных изображений в формате JPG на локальное устройство.
+- **Превью в реальном времени:** Мгновенное отображение изменений при настройке параметров.
+- **Адаптивный дизайн:** Работает бесперебойно на разных размерах экрана.
 
 ## 💻 Технологический стек
 
@@ -35,10 +28,8 @@
 - **Язык:** TypeScript (v5.9.x)
 - **Обработка CSS:** PostCSS с плагинами вроде `autoprefixer` и `postcss-simple-vars`
 - **Линтинг:** ESLint с `@antfu/eslint-config`
-- **Управление состоянием:** Zustand
-- **Маршрутизация:** Tanstack Router
-- **Получение данных:** Tanstack Query (React Query)
-- **Табличный компонент:** Tanstack Table
+- **Интернационализация:** i18next, react-i18next
+- **Обработка изображений:** @zumer/snapdom
 
 Полный список зависимостей см. в [package.json](../package.json).
 
@@ -60,15 +51,14 @@ npm -v
 
 ### Установка
 
-Запустить скрипт
+Клонируйте репозиторий и установите зависимости:
 
 ```bash
-pnpm create trapar-waves
-```
+# Клонирование репозитория
+git clone https://github.com/Muromi-Rikka/Test-Image-Generator.git
+cd Test-Image-Generator
 
-Установить зависимости
-
-```bash
+# Установка зависимостей
 npm install
 yarn install
 pnpm install
@@ -114,6 +104,17 @@ yarn lint
 pnpm lint
 ```
 
+## 🎨 Использование
+
+1. **Настройте размеры:** Отрегулируйте ширину и высоту изображения.
+2. **Добавьте текст:** Введите текст, который вы хотите отобразить на изображении.
+3. **Настройте цвета:** Выберите сплошной цвет или градиентный фон и установите цвет текста.
+4. **Сгенерируйте случайные цвета:** Нажмите кнопку "Случайная цветовая комбинация" для получения автоматических цветовых предложений.
+5. **Сохраните пресет:** Сохраните текущие настройки как пресет для будущего использования.
+6. **Загрузите пресет:** Выберите из сохраненных пресетов для быстрого применения предыдущих настроек.
+7. **Превью:** Посмотрите предварительный просмотр изображения в реальном времени.
+8. **Сохраните изображение:** Нажмите "Сохранить изображение локально" для загрузки сгенерированного изображения.
+
 ## 🤝 Участие в разработке
 
 Вклад в проект приветствуется и очень ценится! Чтобы внести вклад, следуйте этим шагам:
@@ -130,13 +131,12 @@ pnpm lint
 
 Этот проект лицензирован по лицензии MIT - см. файл [LICENSE](../LICENSE) для получения подробной информации.
 
-## 👤 Author
+## 👤 Автор
 
 - **Rikka:** (admin@rikka.cc)
-- **GitHub Profile:** [Muromi-Rikka](https://github.com/Muromi-Rikka)
+- **Профиль на GitHub:** [Muromi-Rikka](https://github.com/Muromi-Rikka)
 
-## 🔗 Links
+## 🔗 Ссылки
 
-- **Репозиторий:** [https://github.com/Trapar-waves/react-mantine-tailwind](https://github.com/Trapar-waves/react-mantine-tailwind)
-- **Домашняя страница:** [https://github.com/Trapar-waves/react-mantine-tailwind](https://github.com/Trapar-waves/react-mantine-tailwind)
-- **Проблемы:** [https://github.com/Trapar-waves/react-mantine-tailwind/issues](https://github.com/Trapar-waves/react-mantine-tailwind/issues)
+- **Репозиторий:** [https://github.com/Muromi-Rikka/Test-Image-Generator](https://github.com/Muromi-Rikka/Test-Image-Generator)
+- **Проблемы:** [https://github.com/Muromi-Rikka/Test-Image-Generator/issues](https://github.com/Muromi-Rikka/Test-Image-Generator/issues)

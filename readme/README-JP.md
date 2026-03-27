@@ -1,31 +1,24 @@
-# @trapar-waves/react-mantine-tailwind
+# テスト画像ジェネレータ
 
-![npm version](https://img.shields.io/npm/v/@trapar-waves/react-mantine-tailwind)
-![npm dm](https://img.shields.io/npm/dm/@trapar-waves/react-mantine-tailwind)
-![License](https://img.shields.io/github/license/Trapar-waves/react-mantine-tailwind)
-![GitHub last commit](https://img.shields.io/github/last-commit/Trapar-waves/react-mantine-tailwind)
-![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/Trapar-waves/react-mantine-tailwind/release.yml)
-![Renovate](https://img.shields.io/badge/renovate-enabled-blue)
+![License](https://img.shields.io/github/license/Muromi-Rikka/Test-Image-Generator)
+![GitHub last commit](https://img.shields.io/github/last-commit/Muromi-Rikka/Test-Image-Generator)
 
 ---
 
 [English](../README.md) | [中文](./README-CN.md) | [Русский язык](./README-RU.md)
 
-> React、Mantine UI、Tailwind CSSを組み合わせた現代的なWebアプリケーション構築用プロジェクトです。
+> React、Mantine UI、Tailwind CSSを使用して構築されたシンプルかつ強力な画像生成ツールです。
 
 ## ✨ 特徴
 
-- **モダンUIフレームワーク:** コンポーネント駆動の宣言型インターフェースのためにReact (v19)を使用して構築されています。
-- **充実したコンポーネントライブラリ:** Mantine UI（`@mantine/core`と`@mantine/hooks`）を統合し、事前構築されたUI要素とユーティリティフックを提供します。
-- **ユーティリティファーストスタイリング:** Tailwind CSSと`@tailwindcss/postcss`を採用し、一貫性を維持しながら柔軟で迅速なスタイリングを可能にします。
-- **PostCSS統合:** `postcss-import`、`autoprefixer`、`postcss-simple-vars`などのPostCSSプラグインを活用し、高度なCSS処理を実現します。
-- **型安全性:** TypeScript (v5.9.x)を使用してコードの信頼性を向上させ、開発中の堅牢な型チェックを提供します。
-- **高速開発ワークフロー:** Rsbuild（`@rsbuild/core`と`@rsbuild/plugin-react`）を使用して最適化されたビルドと効率的な開発サーバーパフォーマンスを実現します。
-- **アイコンサポート:** `@iconify/json`と`@iconify/tailwind`を含み、スケーラブルでカスタマイズ可能なアイコンを提供します。
-- **一貫したデザイン言語:** `postcss-preset-mantine`と`tailwind-preset-mantine`を組み合わせて、MantineとTailwindスタイルのシームレスな統合を実現します。
-- **コード品質への注力:** ESLintと`@antfu/eslint-config`を含み、コードベースのリンティングとベストプラクティスの適用を実現します。
-- **Git Hooks:** Huskyと`lint-staged`を統合し、コミット時の自動コード品質チェックを実現します。
-- **自動リリース:** GitHub Actionsを使用して自動リリースと変更履歴の生成を実現します。
+- **画像カスタマイズ:** カスタム寸法、テキストコンテンツ、色を持つ画像を生成します。
+- **色管理:** 単色とグラデーションの背景をサポートし、自動的にコントラストのあるテキスト色を生成します。
+- **ランダムカラージェネレータ:** 最適な読みやすさのために、高いコントラストのテキストを備えたランダムなカラーコンビネーションを生成します。
+- **プリセット管理:** 頻繁に使用する設定への迅速なアクセスのために、カスタムプリセットを保存および読み込みます。
+- **多言語サポート:** 英語、中国語、日本語、ロシア語に対応しています。
+- **画像エクスポート:** 生成した画像をJPG形式でローカルデバイスに保存します。
+- **リアルタイムプレビュー:** 設定を調整すると即座に変更が表示されます。
+- **レスポンシブデザイン:** さまざまな画面サイズでシームレスに動作します。
 
 ## 💻 技術スタック
 
@@ -35,10 +28,8 @@
 - **言語:** TypeScript (v5.9.x)
 - **CSS処理:** `autoprefixer`や`postcss-simple-vars`などのプラグインを備えたPostCSS
 - **リンティング:** `@antfu/eslint-config`を備えたESLint
-- **状態管理:** Zustand
-- **ルーティング:** Tanstack Router
-- **データフェッチング:** Tanstack Query (React Query)
-- **テーブルコンポーネント:** Tanstack Table
+- **国際化:** i18next, react-i18next
+- **画像処理:** @zumer/snapdom
 
 依存関係の完全なリストについては[package.json](../package.json)を参照してください。
 
@@ -60,15 +51,14 @@ npm -v
 
 ### インストール
 
-スクリプトの実行
+リポジトリをクローンして依存関係をインストールします：
 
 ```bash
-pnpm create trapar-waves
-```
+# リポジトリをクローン
+git clone https://github.com/Muromi-Rikka/Test-Image-Generator.git
+cd Test-Image-Generator
 
-依存関係のインストール
-
-```bash
+# 依存関係のインストール
 npm install
 yarn install
 pnpm install
@@ -114,6 +104,17 @@ yarn lint
 pnpm lint
 ```
 
+## 🎨 使用方法
+
+1. **寸法を設定:** 画像の幅と高さを調整します。
+2. **テキストを追加:** 画像に表示するテキストを入力します。
+3. **色をカスタマイズ:** 単色またはグラデーションの背景を選択し、テキストの色を設定します。
+4. **ランダムな色を生成:** "ランダムな色の組み合わせ"ボタンをクリックして自動的な色の提案を取得します。
+5. **プリセットを保存:** 現在の設定を将来の使用のためにプリセットとして保存します。
+6. **プリセットを読み込み:** 保存されたプリセットから選択して、以前の設定をすばやく適用します。
+7. **プレビュー:** 画像の効果をリアルタイムで確認します。
+8. **画像を保存:** "ローカルに画像を保存"をクリックして生成された画像をダウンロードします。
+
 ## 🤝 コントリビューション
 
 貢献は歓迎され、非常に高く評価されています！貢献するには以下の手順に従ってください：
@@ -130,13 +131,12 @@ pnpm lint
 
 このプロジェクトはMITライセンスの下でライセンスされています。詳細については[LICENSE](../LICENSE)ファイルを参照してください。
 
-## 👤 Author
+## 👤 作者
 
 - **Rikka:** (admin@rikka.cc)
 - **GitHub Profile:** [Muromi-Rikka](https://github.com/Muromi-Rikka)
 
-## 🔗 Links
+## 🔗 リンク
 
-- **リポジトリ:** [https://github.com/Trapar-waves/react-mantine-tailwind](https://github.com/Trapar-waves/react-mantine-tailwind)
-- **ホームページ:** [https://github.com/Trapar-waves/react-mantine-tailwind](https://github.com/Trapar-waves/react-mantine-tailwind)
-- **イシュー:** [https://github.com/Trapar-waves/react-mantine-tailwind/issues](https://github.com/Trapar-waves/react-mantine-tailwind/issues)
+- **リポジトリ:** [https://github.com/Muromi-Rikka/Test-Image-Generator](https://github.com/Muromi-Rikka/Test-Image-Generator)
+- **イシュー:** [https://github.com/Muromi-Rikka/Test-Image-Generator/issues](https://github.com/Muromi-Rikka/Test-Image-Generator/issues)

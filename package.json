@@ -1,24 +1,25 @@
 {
-  "name": "@trapar-waves/react-mantine-tailwind",
+  "name": "test-image-generator",
   "type": "module",
-  "version": "1.1.23",
+  "version": "1.0.0",
   "packageManager": "pnpm@10.33.0",
-  "description": "A React template integrating Mantine UI and Tailwind CSS for modern web development",
+  "description": "A simple yet powerful image generator tool built with React, Mantine UI, and Tailwind CSS",
   "author": {
     "email": "admin@rikka.cc",
     "name": "Rikka",
     "url": "https://github.com/Muromi-Rikka"
   },
   "licence": "MIT",
-  "homepage": "https://github.com/Trapar-waves/react-mantine-tailwind",
+  "homepage": "https://github.com/Muromi-Rikka/Test-Image-Generator",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Trapar-waves/react-mantine-tailwind.git"
+    "url": "git+https://github.com/Muromi-Rikka/Test-Image-Generator.git"
   },
   "bugs": {
-    "url": "https://github.com/Trapar-waves/react-mantine-tailwind/issues"
+    "url": "https://github.com/Muromi-Rikka/Test-Image-Generator/issues"
   },
   "keywords": [
+    "image-generator",
     "react",
     "tailwind",
     "mantine",
