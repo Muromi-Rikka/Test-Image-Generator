@@ -1,7 +1,6 @@
 import type { ImageConfig } from "../types";
 import { Box, ColorInput, Stack, Switch, Text } from "@mantine/core";
 import * as React from "react";
-import { useEffect, useState } from "react";
 
 interface ColorPickerProps {
   config: ImageConfig;
@@ -9,38 +8,23 @@ interface ColorPickerProps {
 }
 
 export function ColorPicker({ config, updateConfig }: ColorPickerProps) {
-  const [gradientColor1, setGradientColor1] = useState(config.gradientColors?.[0] || "#ff0000");
-  const [gradientColor2, setGradientColor2] = useState(config.gradientColors?.[1] || "#0000ff");
-
-  // 当config.gradientColors变化时，更新内部状态
-  useEffect(() => {
-    if (config.gradientColors && config.gradientColors.length >= 2) {
-      // eslint-disable-next-line react-hooks-extra/no-direct-set-state-in-use-effect
-      setGradientColor1(config.gradientColors[0]);
-      // eslint-disable-next-line react-hooks-extra/no-direct-set-state-in-use-effect
-      setGradientColor2(config.gradientColors[1]);
-    }
-  }, [config.gradientColors]);
+  // 使用默认颜色作为回退
+  const defaultGradientColor1 = "#ff0000";
+  const defaultGradientColor2 = "#0000ff";
 
   const handleGradientToggle = (event: React.ChangeEvent<HTMLInputElement>) => {
     const checked = event.target.checked;
     updateConfig({
       isGradient: checked,
-      gradientColors: checked ? [gradientColor1, gradientColor2] : undefined,
+      gradientColors: checked ? [defaultGradientColor1, defaultGradientColor2] : undefined,
     });
   };
 
   const handleGradientColorChange = (index: number, color: string) => {
-    const newGradientColors = [...(config.gradientColors || [gradientColor1, gradientColor2])];
+    const currentColors = config.gradientColors || [defaultGradientColor1, defaultGradientColor2];
+    const newGradientColors = [...currentColors];
     newGradientColors[index] = color;
     updateConfig({ gradientColors: newGradientColors });
-
-    if (index === 0) {
-      setGradientColor1(color);
-    }
-    else {
-      setGradientColor2(color);
-    }
   };
 
   return (
@@ -88,7 +72,7 @@ export function ColorPicker({ config, updateConfig }: ColorPickerProps) {
                   <Box>
                     <Text size="xs" className="mb-1">颜色 1</Text>
                     <ColorInput
-                      value={gradientColor1}
+                      value={config.gradientColors?.[0] || defaultGradientColor1}
                       onChange={color => handleGradientColorChange(0, color)}
                       format="hex"
                       withPicker
@@ -97,7 +81,7 @@ export function ColorPicker({ config, updateConfig }: ColorPickerProps) {
                   <Box>
                     <Text size="xs" className="mb-1">颜色 2</Text>
                     <ColorInput
-                      value={gradientColor2}
+                      value={config.gradientColors?.[1] || defaultGradientColor2}
                       onChange={color => handleGradientColorChange(1, color)}
                       format="hex"
                       withPicker
