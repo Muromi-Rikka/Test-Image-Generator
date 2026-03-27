@@ -19,7 +19,7 @@ export function useImageGenerator() {
     setConfig(prev => ({ ...prev, ...newConfig }));
   }, []);
 
-  const save = useCallback(async (filename: string = "test-image.png") => {
+  const save = useCallback(async (filename: string = "test-image.jpg") => {
     if (!imageRef.current)
       return;
 

@@ -17,7 +17,7 @@ export function SaveButton({ onSave, loading }: SaveButtonProps) {
         保存图片到本地
       </Button>
       <Text size="sm" color="dimmed">
-        图片将以PNG格式压缩保存
+        图片将以JPG格式压缩保存
       </Text>
     </Stack>
   );
