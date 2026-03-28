@@ -201,7 +201,7 @@ export function ImageGenerator() {
           <Card shadow="sm" className="mb-6 p-4 flex flex-col items-center">
             <h2 className="text-xl font-semibold mb-4">{t("preview.title")}</h2>
 
-            <div className="relative border border-gray-200 overflow-hidden mb-6 bg-gray-100">
+            <div className="relative border border-gray-200 mb-6 bg-gray-100 max-h-[300px] overflow-auto">
               {loading
                 ? (
                     <div className="w-full h-64 flex items-center justify-center">
@@ -225,7 +225,7 @@ export function ImageGenerator() {
                         wordBreak: "break-word",
                         overflow: "hidden",
                       }}
-                      className="max-w-full max-h-[300px] object-contain overflow-auto"
+                      className="max-w-full object-contain overflow-auto"
                     >
                       {config.text}
                     </div>
