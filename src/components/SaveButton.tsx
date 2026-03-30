@@ -14,7 +14,7 @@ export function SaveButton({ onSave, loading }: SaveButtonProps) {
         onClick={onSave}
         loading={loading}
         size="lg"
-        className="w-full max-w-md"
+        className="w-full max-w-md save-button driver-guide-save"
       >
         {t("saveButton.save")}
       </Button>

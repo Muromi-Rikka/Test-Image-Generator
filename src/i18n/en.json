@@ -36,5 +36,35 @@
   "preview": {
     "title": "Preview",
     "saving": "Saving..."
+  },
+  "driver": {
+    "next": "Next",
+    "prev": "Previous",
+    "close": "Close",
+    "done": "Done",
+    "welcome": {
+      "title": "Welcome to Image Generator",
+      "description": "This is a simple yet powerful online image generation tool. Let's learn how to use it together."
+    },
+    "size": {
+      "title": "Set Image Size",
+      "description": "Adjust the width and height of the image here, in pixels."
+    },
+    "text": {
+      "title": "Add Text Content",
+      "description": "Enter the text you want to display on the image in the text box."
+    },
+    "color": {
+      "title": "Customize Colors",
+      "description": "Choose background color, text color, or use gradient effects."
+    },
+    "preset": {
+      "title": "Save Preset",
+      "description": "Save current settings as a preset for quick use later."
+    },
+    "save": {
+      "title": "Save Image",
+      "description": "After completing settings, click here to save the image to your local device."
+    }
   }
 }

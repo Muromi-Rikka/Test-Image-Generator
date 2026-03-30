@@ -36,5 +36,35 @@
   "preview": {
     "title": "预览",
     "saving": "保存中..."
+  },
+  "driver": {
+    "next": "下一步",
+    "prev": "上一步",
+    "close": "关闭",
+    "done": "完成",
+    "welcome": {
+      "title": "欢迎使用图像生成器",
+      "description": "这是一个简单而强大的在线图像生成工具，让我们一起了解如何使用它。"
+    },
+    "size": {
+      "title": "设置图片尺寸",
+      "description": "在这里调整图片的宽度和高度，以像素为单位。"
+    },
+    "text": {
+      "title": "添加文字内容",
+      "description": "在文本框中输入您想要在图片上显示的文字。"
+    },
+    "color": {
+      "title": "自定义颜色",
+      "description": "选择背景颜色、文字颜色，或者使用渐变色效果。"
+    },
+    "preset": {
+      "title": "保存预设",
+      "description": "将当前设置保存为预设，方便以后快速使用。"
+    },
+    "save": {
+      "title": "保存图片",
+      "description": "完成设置后，点击这里将图片保存到本地。"
+    }
   }
 }

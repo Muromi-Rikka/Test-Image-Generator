@@ -37,7 +37,7 @@ export function ColorPicker({ config, updateConfig }: ColorPickerProps) {
   };
 
   return (
-    <Box>
+    <Box className="color-picker driver-guide-color">
       <Text size="sm" className="mb-2">{t("colorPicker.title")}</Text>
 
       <Stack gap="sm">

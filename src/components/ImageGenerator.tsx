@@ -1,8 +1,9 @@
-import { Box, Button, Card, Grid, NumberInput, Stack, Text, Textarea } from "@mantine/core";
-import { useState } from "react";
+import { Box, Button, Card, Grid, NumberInput, Stack, Text, Textarea, Tooltip } from "@mantine/core";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useImageGenerator } from "../hooks/useImageGenerator";
 import { ColorPicker } from "./ColorPicker";
+import { DriverGuide } from "./DriverGuide";
 import { LanguageSelector } from "./LanguageSelector";
 import { PresetManager } from "./PresetManager";
 import { SaveButton } from "./SaveButton";
@@ -13,7 +14,32 @@ const HEX_COLOR_REGEX = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i;
 export function ImageGenerator() {
   const { config, loading, updateConfig, save, imageRef } = useImageGenerator();
   const [showSaveModal, setShowSaveModal] = useState(false);
+  const [showDriverGuide, setShowDriverGuide] = useState(false);
   const { t } = useTranslation();
+
+  // 首次加载时检查是否需要显示引导
+  useEffect(() => {
+    let timeoutId: number | undefined;
+
+    const checkDriverGuide = () => {
+      const hasSeenGuide = localStorage.getItem("hasSeenDriverGuide");
+      if (!hasSeenGuide) {
+        // 使用 setTimeout 包装，避免 eslint 警告
+        timeoutId = window.setTimeout(() => {
+          setShowDriverGuide(true);
+          localStorage.setItem("hasSeenDriverGuide", "true");
+        }, 0);
+      }
+    };
+
+    checkDriverGuide();
+
+    return () => {
+      if (timeoutId) {
+        window.clearTimeout(timeoutId);
+      }
+    };
+  }, []);
 
   // 处理渐变背景样式
   const getBackgroundStyle = () => {
@@ -31,8 +57,19 @@ export function ImageGenerator() {
   return (
     <div className="w-full max-w-7xl mx-auto p-4">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold">{t("app.title")}</h1>
-        <LanguageSelector />
+        <h1 className="text-3xl font-bold driver-guide-title">{t("app.title")}</h1>
+        <div className="flex items-center gap-2">
+          <Tooltip label={t("driver.welcome.title")}>
+            <Button
+              onClick={() => setShowDriverGuide(true)}
+              variant="outline"
+              size="sm"
+            >
+              {t("driver.welcome.title")}
+            </Button>
+          </Tooltip>
+          <LanguageSelector />
+        </div>
       </div>
 
       <Grid gutter="md">
@@ -43,7 +80,7 @@ export function ImageGenerator() {
 
             <Stack gap="md">
               {/* 尺寸设置 */}
-              <Grid gutter="sm">
+              <Grid gutter="sm" className="driver-guide-size">
                 <Grid.Col span={6}>
                   <Text size="sm" className="mb-2">{t("imageGenerator.width")}</Text>
                   <NumberInput
@@ -63,7 +100,7 @@ export function ImageGenerator() {
               </Grid>
 
               {/* 文字设置 */}
-              <Box>
+              <Box className="driver-guide-text">
                 <Text size="sm" className="mb-2">{t("imageGenerator.text")}</Text>
                 <Textarea
                   value={config.text}
@@ -166,7 +203,7 @@ export function ImageGenerator() {
                       data-testid="save-preset-button"
                       onClick={() => setShowSaveModal(true)}
                       variant="outline"
-                      className="w-full"
+                      className="w-full driver-guide-preset"
                     >
                       {t("imageGenerator.savePreset")}
                     </Button>
@@ -239,6 +276,11 @@ export function ImageGenerator() {
           </Card>
         </Grid.Col>
       </Grid>
+
+      <DriverGuide
+        isVisible={showDriverGuide}
+        onClose={() => setShowDriverGuide(false)}
+      />
     </div>
   );
 }

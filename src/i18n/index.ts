@@ -14,11 +14,20 @@ const resources = {
   },
 };
 
+// 获取浏览器语言
+function getBrowserLanguage() {
+  if (typeof window !== "undefined" && window.navigator && window.navigator.language) {
+    const lang = window.navigator.language.split("-")[0]; // 只取语言代码，如 "zh-CN" 取 "zh"
+    return resources[lang as keyof typeof resources] ? lang : "zh";
+  }
+  return "zh";
+}
+
 i18n
   .use(initReactI18next)
   .init({
     resources,
-    lng: "zh", // 默认语言
+    lng: getBrowserLanguage(), // 根据浏览器语言自动选择默认语言
     fallbackLng: "en", // 回退语言
     interpolation: {
       escapeValue: false, // React 已经会转义，不需要 i18next 再转义
