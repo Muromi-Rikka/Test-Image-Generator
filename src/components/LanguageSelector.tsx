@@ -2,13 +2,13 @@ import { Select } from "@mantine/core";
 import { useTranslation } from "react-i18next";
 
 const flagMap: Record<string, string> = {
-  zh: "circle-flags--cn",
-  en: "circle-flags--us",
-  ja: "circle-flags--jp",
-  ko: "circle-flags--kr",
-  ru: "circle-flags--ru",
-  fr: "circle-flags--fr",
-  de: "circle-flags--de",
+  zh: "icon-[circle-flags--cn]",
+  en: "icon-[circle-flags--us]",
+  ja: "icon-[circle-flags--jp]",
+  ko: "icon-[circle-flags--kr]",
+  ru: "icon-[circle-flags--ru]",
+  fr: "icon-[circle-flags--fr]",
+  de: "icon-[circle-flags--de]",
 };
 
 const i18nData = [
@@ -41,7 +41,7 @@ export function LanguageSelector() {
         const flagClass = flagMap[option.option.value];
         return (
           <div className="flex items-center">
-            <span className={`icon-[${flagClass}] mr-2`}></span>
+            <span className={`${flagClass} mr-2`}></span>
             {option.option.label}
           </div>
         );
