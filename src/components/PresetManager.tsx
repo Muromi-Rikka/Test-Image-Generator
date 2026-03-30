@@ -106,7 +106,7 @@ export function PresetManager({ currentConfig, onLoadPreset, showSaveModal = fal
             {presets.map(preset => (
               <Box
                 key={preset.id}
-                className="border rounded overflow-hidden cursor-pointer hover:shadow-md transition-shadow"
+                className="border border-gray-200 dark:border-gray-700 rounded overflow-hidden cursor-pointer hover:shadow-md transition-shadow"
                 onClick={() => handleLoadPreset(preset.id)}
               >
                 <div
@@ -127,8 +127,8 @@ export function PresetManager({ currentConfig, onLoadPreset, showSaveModal = fal
                     </Text>
                   </div>
                 </div>
-                <div className="p-2 bg-gray-50">
-                  <Text size="xs" className="text-gray-600">
+                <div className="p-2 bg-gray-50 dark:bg-gray-800">
+                  <Text size="xs" className="text-gray-600 dark:text-gray-300">
                     {preset.width}
                     ×
                     {preset.height}
@@ -161,7 +161,7 @@ export function PresetManager({ currentConfig, onLoadPreset, showSaveModal = fal
         title={t("presetManager.savePreset")}
       >
         <Stack gap="md">
-          <div className="p-4 bg-gray-50 rounded">
+          <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded">
             <Text size="sm">{t("presetManager.presetInfo")}</Text>
             <Text size="sm" className="mt-2 font-semibold">{currentConfig.text || t("presetManager.noText")}</Text>
           </div>

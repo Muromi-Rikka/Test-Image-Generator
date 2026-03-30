@@ -1,4 +1,4 @@
-import { Box, Button, Card, Grid, NumberInput, Stack, Text, Textarea, Tooltip } from "@mantine/core";
+import { Box, Button, Card, Grid, NumberInput, Stack, Text, Textarea, Tooltip, useMantineColorScheme } from "@mantine/core";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useImageGenerator } from "../hooks/useImageGenerator";
@@ -16,6 +16,7 @@ export function ImageGenerator() {
   const [showSaveModal, setShowSaveModal] = useState(false);
   const [showDriverGuide, setShowDriverGuide] = useState(false);
   const { t } = useTranslation();
+  const { colorScheme, toggleColorScheme } = useMantineColorScheme();
 
   // 首次加载时检查是否需要显示引导
   useEffect(() => {
@@ -55,9 +56,9 @@ export function ImageGenerator() {
   };
 
   return (
-    <div className="w-full max-w-7xl mx-auto p-4">
+    <div className="w-full max-w-7xl mx-auto p-4 text-gray-900 dark:text-gray-100">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold driver-guide-title flex items-center gap-2">
+        <h1 className="text-3xl font-bold driver-guide-title flex items-center gap-2 text-gray-900 dark:text-white">
           <span className="icon-[lucide--image] icon-size-8 text-blue-500"></span>
           {t("app.title")}
         </h1>
@@ -70,6 +71,16 @@ export function ImageGenerator() {
               leftSection={<span className="icon-[lucide--help-circle]"></span>}
             >
               {t("driver.welcome.title")}
+            </Button>
+          </Tooltip>
+          <Tooltip label={colorScheme === "light" ? t("theme.dark") : t("theme.light")}>
+            <Button
+              onClick={toggleColorScheme}
+              variant="outline"
+              size="sm"
+              leftSection={<span className={colorScheme === "light" ? "icon-[lucide--moon]" : "icon-[lucide--sun]"}></span>}
+            >
+              {colorScheme === "light" ? t("theme.dark") : t("theme.light")}
             </Button>
           </Tooltip>
           <LanguageSelector />
@@ -244,7 +255,7 @@ export function ImageGenerator() {
           <Card shadow="sm" className="mb-6 p-4 flex flex-col items-center">
             <h2 className="text-xl font-semibold mb-4">{t("preview.title")}</h2>
 
-            <div className="relative border border-gray-200 mb-6 bg-gray-100 max-h-[300px] overflow-auto">
+            <div className="relative border border-gray-200 dark:border-gray-700 mb-6 bg-gray-100 dark:bg-gray-800 max-h-[300px] overflow-auto">
               {loading
                 ? (
                     <div className="w-full h-64 flex items-center justify-center">

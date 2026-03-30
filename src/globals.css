@@ -8,7 +8,50 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* 浅色主题 */
+body.light-theme {
   background-color: #f5f5f5;
+  color: #333333;
+}
+
+/* 深色主题 */
+body.dark-theme {
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+}
+
+/* driver.js 暗模式样式 */
+body.dark-theme .driver-popover {
+  background-color: #2d2d2d !important;
+  color: #e0e0e0 !important;
+  border: 1px solid #444 !important;
+}
+
+body.dark-theme .driver-popover-title {
+  color: #ffffff !important;
+}
+
+body.dark-theme .driver-popover-description {
+  color: #e0e0e0 !important;
+}
+
+body.dark-theme .driver-popover-navigation-buttons {
+  border-top: 1px solid #444 !important;
+}
+
+body.dark-theme .driver-popover-button {
+  color: #e0e0e0 !important;
+}
+
+body.dark-theme .driver-popover-button:hover {
+  background-color: #444 !important;
+}
+
+body.dark-theme .driver-highlighted-element {
+  outline: 2px solid #3b82f6 !important;
 }
 
 code {

@@ -1,7 +1,53 @@
+import { createTheme, MantineProvider, useMantineColorScheme } from "@mantine/core";
+import { useEffect } from "react";
 import { ImageGenerator } from "./components/ImageGenerator";
 import "./globals.css";
 
+// 创建主题
+const theme = createTheme({
+  // 主题配置
+});
+
 function App() {
+  const { colorScheme, setColorScheme } = useMantineColorScheme();
+
+  // 从本地存储读取主题偏好，如果没有则使用系统偏好
+  useEffect(() => {
+    const savedScheme = localStorage.getItem("colorScheme");
+    if (savedScheme === "light" || savedScheme === "dark") {
+      setColorScheme(savedScheme);
+    }
+    else {
+      // 检测系统主题偏好
+      if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        setColorScheme("dark");
+      }
+      else {
+        setColorScheme("light");
+      }
+    }
+  }, [setColorScheme]);
+
+  // 保存主题偏好到本地存储
+  useEffect(() => {
+    if (colorScheme) {
+      localStorage.setItem("colorScheme", colorScheme);
+    }
+  }, [colorScheme]);
+
+  // 监听系统主题变化
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    const handleChange = () => {
+      if (!localStorage.getItem("colorScheme")) {
+        setColorScheme(mediaQuery.matches ? "dark" : "light");
+      }
+    };
+
+    mediaQuery.addEventListener("change", handleChange);
+    return () => mediaQuery.removeEventListener("change", handleChange);
+  }, [setColorScheme]);
+
   const websiteSchema = JSON.stringify({
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -30,14 +76,30 @@ function App() {
     },
   });
 
+  // 设置 body 元素的主题类名
+  useEffect(() => {
+    if (colorScheme === "dark") {
+      document.body.classList.add("dark-theme");
+      document.body.classList.add("dark");
+      document.body.classList.remove("light-theme");
+    }
+    else {
+      document.body.classList.add("light-theme");
+      document.body.classList.remove("dark-theme");
+      document.body.classList.remove("dark");
+    }
+  }, [colorScheme]);
+
   return (
-    <div className="min-h-screen bg-gray-50">
-      <ImageGenerator />
-      {/* eslint-disable-next-line react-dom/no-dangerously-set-innerhtml */}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: websiteSchema }} />
-      {/* eslint-disable-next-line react-dom/no-dangerously-set-innerhtml */}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: softwareSchema }} />
-    </div>
+    <MantineProvider theme={theme} defaultColorScheme={colorScheme}>
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+        <ImageGenerator />
+        {/* eslint-disable-next-line react-dom/no-dangerously-set-innerhtml */}
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: websiteSchema }} />
+        {/* eslint-disable-next-line react-dom/no-dangerously-set-innerhtml */}
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: softwareSchema }} />
+      </div>
+    </MantineProvider>
   );
 }
 

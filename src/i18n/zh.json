@@ -2,6 +2,10 @@
   "app": {
     "title": "测试图片生成器"
   },
+  "theme": {
+    "light": "浅色模式",
+    "dark": "深色模式"
+  },
   "imageGenerator": {
     "settings": "图片设置",
     "width": "宽度 (px)",

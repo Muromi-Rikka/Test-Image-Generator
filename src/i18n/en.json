@@ -2,6 +2,10 @@
   "app": {
     "title": "Test Image Generator"
   },
+  "theme": {
+    "light": "Light Mode",
+    "dark": "Dark Mode"
+  },
   "imageGenerator": {
     "settings": "Image Settings",
     "width": "Width (px)",
