@@ -1,0 +1,74 @@
+{
+  "app": {
+    "title": "テスト画像ジェネレータ"
+  },
+  "theme": {
+    "light": "ライトモード",
+    "dark": "ダークモード"
+  },
+  "imageGenerator": {
+    "settings": "画像設定",
+    "width": "幅 (px)",
+    "height": "高さ (px)",
+    "text": "テキスト内容",
+    "textSize": "テキストサイズ (px)",
+    "textPlaceholder": "画像のテキストを入力してください",
+    "randomColors": "ランダムな色の組み合わせ",
+    "savePreset": "現在の設定をプリセットとして保存"
+  },
+  "colorPicker": {
+    "title": "色設定",
+    "textColor": "テキストの色",
+    "gradientBackground": "グラデーション背景",
+    "backgroundColor": "背景色",
+    "gradientColors": "グラデーションの色",
+    "color1": "色 1",
+    "color2": "色 2"
+  },
+  "presetManager": {
+    "savePreset": "プリセットを保存",
+    "presetInfo": "プリセットは現在のテキスト内容で識別されます",
+    "noText": "テキストなし",
+    "cancel": "キャンセル",
+    "save": "保存",
+    "delete": "削除"
+  },
+  "saveButton": {
+    "save": "画像をローカルに保存",
+    "formatInfo": "画像は圧縮された JPG 形式で保存されます"
+  },
+  "preview": {
+    "title": "プレビュー",
+    "saving": "保存中..."
+  },
+  "driver": {
+    "next": "次へ",
+    "prev": "前へ",
+    "close": "閉じる",
+    "done": "完了",
+    "welcome": {
+      "title": "画像ジェネレータへようこそ",
+      "description": "これはシンプルで強力なオンライン画像生成ツールです。一緒に使い方を学びましょう。"
+    },
+    "size": {
+      "title": "画像サイズを設定",
+      "description": "ここで画像の幅と高さをピクセル単位で調整します。"
+    },
+    "text": {
+      "title": "テキスト内容を追加",
+      "description": "テキストボックスに画像に表示したいテキストを入力します。"
+    },
+    "color": {
+      "title": "色をカスタマイズ",
+      "description": "背景色、テキストの色を選択するか、グラデーション効果を使用します。"
+    },
+    "preset": {
+      "title": "プリセットを保存",
+      "description": "現在の設定をプリセットとして保存し、後ですばやく使用できるようにします。"
+    },
+    "save": {
+      "title": "画像を保存",
+      "description": "設定が完了したら、ここをクリックして画像をローカルデバイスに保存します。"
+    }
+  }
+}

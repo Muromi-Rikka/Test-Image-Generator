@@ -17,6 +17,11 @@ export function LanguageSelector() {
       data={[
         { value: "zh", label: "中文" },
         { value: "en", label: "English" },
+        { value: "ja", label: "日本語" },
+        { value: "ko", label: "한국어" },
+        { value: "ru", label: "Русский" },
+        { value: "fr", label: "Français" },
+        { value: "de", label: "Deutsch" },
       ]}
       className="w-40"
       leftSection={<span className="icon-[lucide--globe]"></span>}

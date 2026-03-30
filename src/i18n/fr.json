@@ -1,0 +1,74 @@
+{
+  "app": {
+    "title": "Générateur d'images de test"
+  },
+  "theme": {
+    "light": "Mode clair",
+    "dark": "Mode sombre"
+  },
+  "imageGenerator": {
+    "settings": "Paramètres de l'image",
+    "width": "Largeur (px)",
+    "height": "Hauteur (px)",
+    "text": "Contenu du texte",
+    "textSize": "Taille du texte (px)",
+    "textPlaceholder": "Veuillez entrer le texte de l'image",
+    "randomColors": "Combinaison de couleurs aléatoire",
+    "savePreset": "Enregistrer les paramètres actuels en tant que préréglage"
+  },
+  "colorPicker": {
+    "title": "Paramètres de couleur",
+    "textColor": "Couleur du texte",
+    "gradientBackground": "Fond dégradé",
+    "backgroundColor": "Couleur de fond",
+    "gradientColors": "Couleurs du dégradé",
+    "color1": "Couleur 1",
+    "color2": "Couleur 2"
+  },
+  "presetManager": {
+    "savePreset": "Enregistrer le préréglage",
+    "presetInfo": "Le préréglage sera identifié par le contenu actuel du texte",
+    "noText": "Aucun texte",
+    "cancel": "Annuler",
+    "save": "Enregistrer",
+    "delete": "Supprimer"
+  },
+  "saveButton": {
+    "save": "Enregistrer l'image localement",
+    "formatInfo": "L'image sera enregistrée au format JPG avec compression"
+  },
+  "preview": {
+    "title": "Aperçu",
+    "saving": "Enregistrement..."
+  },
+  "driver": {
+    "next": "Suivant",
+    "prev": "Précédent",
+    "close": "Fermer",
+    "done": "Terminé",
+    "welcome": {
+      "title": "Bienvenue dans le Générateur d'images",
+      "description": "C'est un outil de génération d'images en ligne simple mais puissant. Apprenons à l'utiliser ensemble."
+    },
+    "size": {
+      "title": "Définir la taille de l'image",
+      "description": "Ajustez ici la largeur et la hauteur de l'image en pixels."
+    },
+    "text": {
+      "title": "Ajouter du contenu textuel",
+      "description": "Entrez le texte que vous souhaitez afficher sur l'image dans la zone de texte."
+    },
+    "color": {
+      "title": "Personnaliser les couleurs",
+      "description": "Choisissez la couleur de fond, la couleur du texte ou utilisez des effets de dégradé."
+    },
+    "preset": {
+      "title": "Enregistrer un préréglage",
+      "description": "Enregistrez les paramètres actuels en tant que préréglage pour une utilisation rapide ultérieure."
+    },
+    "save": {
+      "title": "Enregistrer l'image",
+      "description": "Après avoir terminé les paramètres, cliquez ici pour enregistrer l'image sur votre appareil local."
+    }
+  }
+}

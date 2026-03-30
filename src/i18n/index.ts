@@ -1,7 +1,12 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 
+import de from "./de.json";
 import en from "./en.json";
+import fr from "./fr.json";
+import ja from "./ja.json";
+import ko from "./ko.json";
+import ru from "./ru.json";
 import zh from "./zh.json";
 import "./types"; // 导入类型定义
 
@@ -11,6 +16,21 @@ const resources = {
   },
   zh: {
     translation: zh,
+  },
+  ja: {
+    translation: ja,
+  },
+  ko: {
+    translation: ko,
+  },
+  ru: {
+    translation: ru,
+  },
+  fr: {
+    translation: fr,
+  },
+  de: {
+    translation: de,
   },
 };
 

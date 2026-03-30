@@ -1,0 +1,74 @@
+{
+  "app": {
+    "title": "Testbild-Generator"
+  },
+  "theme": {
+    "light": "Hellmodus",
+    "dark": "Dunkelmodus"
+  },
+  "imageGenerator": {
+    "settings": "Bildereinstellungen",
+    "width": "Breite (px)",
+    "height": "Höhe (px)",
+    "text": "Textinhalt",
+    "textSize": "Textgröße (px)",
+    "textPlaceholder": "Bitte geben Sie den Bildtext ein",
+    "randomColors": "Zufällige Farbkombination",
+    "savePreset": "Aktuelle Einstellungen als Voreinstellung speichern"
+  },
+  "colorPicker": {
+    "title": "Farbeinstellungen",
+    "textColor": "Textfarbe",
+    "gradientBackground": "Verlaufshintergrund",
+    "backgroundColor": "Hintergrundfarbe",
+    "gradientColors": "Verlaufsfarben",
+    "color1": "Farbe 1",
+    "color2": "Farbe 2"
+  },
+  "presetManager": {
+    "savePreset": "Voreinstellung speichern",
+    "presetInfo": "Die Voreinstellung wird anhand des aktuellen Textinhalts identifiziert",
+    "noText": "Kein Text",
+    "cancel": "Abbrechen",
+    "save": "Speichern",
+    "delete": "Löschen"
+  },
+  "saveButton": {
+    "save": "Bild lokal speichern",
+    "formatInfo": "Das Bild wird im komprimierten JPG-Format gespeichert"
+  },
+  "preview": {
+    "title": "Vorschau",
+    "saving": "Speichern..."
+  },
+  "driver": {
+    "next": "Weiter",
+    "prev": "Zurück",
+    "close": "Schließen",
+    "done": "Fertig",
+    "welcome": {
+      "title": "Willkommen beim Bild-Generator",
+      "description": "Dies ist ein einfaches, aber leistungsstarkes Online-Tool zur Bildgenerierung. Lernen wir gemeinsam, es zu verwenden."
+    },
+    "size": {
+      "title": "Bildgröße einstellen",
+      "description": "Passen Sie hier die Breite und Höhe des Bildes in Pixeln an."
+    },
+    "text": {
+      "title": "Textinhalt hinzufügen",
+      "description": "Geben Sie den Text, den Sie auf dem Bild anzeigen möchten, in das Textfeld ein."
+    },
+    "color": {
+      "title": "Farben anpassen",
+      "description": "Wählen Sie Hintergrundfarbe, Textfarbe oder verwenden Sie Verlaufeffekte."
+    },
+    "preset": {
+      "title": "Voreinstellung speichern",
+      "description": "Speichern Sie die aktuellen Einstellungen als Voreinstellung für die spätere schnelle Verwendung."
+    },
+    "save": {
+      "title": "Bild speichern",
+      "description": "Nach Abschluss der Einstellungen klicken Sie hier, um das Bild auf Ihr lokales Gerät zu speichern."
+    }
+  }
+}
