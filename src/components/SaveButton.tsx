@@ -15,6 +15,7 @@ export function SaveButton({ onSave, loading }: SaveButtonProps) {
         loading={loading}
         size="lg"
         className="w-full max-w-md save-button driver-guide-save"
+        leftSection={<span className="icon-[lucide--download]"></span>}
       >
         {t("saveButton.save")}
       </Button>

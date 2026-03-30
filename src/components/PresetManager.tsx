@@ -143,6 +143,7 @@ export function PresetManager({ currentConfig, onLoadPreset, showSaveModal = fal
                         e.stopPropagation();
                         handleDeletePreset(preset.id);
                       }}
+                      leftSection={<span className="icon-[lucide--trash-2]"></span>}
                     >
                       {t("presetManager.delete")}
                     </Button>
@@ -168,7 +169,7 @@ export function PresetManager({ currentConfig, onLoadPreset, showSaveModal = fal
             <Button onClick={handleCloseModal} variant="outline">
               {t("presetManager.cancel")}
             </Button>
-            <Button onClick={handleSavePreset}>
+            <Button onClick={handleSavePreset} leftSection={<span className="icon-[lucide--save]"></span>}>
               {t("presetManager.save")}
             </Button>
           </div>

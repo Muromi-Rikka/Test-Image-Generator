@@ -19,6 +19,7 @@ export function LanguageSelector() {
         { value: "en", label: "English" },
       ]}
       className="w-40"
+      leftSection={<span className="icon-[lucide--globe]"></span>}
     />
   );
 }

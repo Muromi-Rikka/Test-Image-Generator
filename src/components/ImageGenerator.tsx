@@ -57,13 +57,17 @@ export function ImageGenerator() {
   return (
     <div className="w-full max-w-7xl mx-auto p-4">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold driver-guide-title">{t("app.title")}</h1>
+        <h1 className="text-3xl font-bold driver-guide-title flex items-center gap-2">
+          <span className="icon-[lucide--image] icon-size-8 text-blue-500"></span>
+          {t("app.title")}
+        </h1>
         <div className="flex items-center gap-2">
           <Tooltip label={t("driver.welcome.title")}>
             <Button
               onClick={() => setShowDriverGuide(true)}
               variant="outline"
               size="sm"
+              leftSection={<span className="icon-[lucide--help-circle]"></span>}
             >
               {t("driver.welcome.title")}
             </Button>
@@ -194,6 +198,7 @@ export function ImageGenerator() {
                         }
                       }}
                       className="w-full"
+                      leftSection={<span className="icon-[lucide--palette]"></span>}
                     >
                       {t("imageGenerator.randomColors")}
                     </Button>
@@ -204,6 +209,7 @@ export function ImageGenerator() {
                       onClick={() => setShowSaveModal(true)}
                       variant="outline"
                       className="w-full driver-guide-preset"
+                      leftSection={<span className="icon-[lucide--save]"></span>}
                     >
                       {t("imageGenerator.savePreset")}
                     </Button>
