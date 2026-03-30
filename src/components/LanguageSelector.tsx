@@ -40,7 +40,7 @@ export function LanguageSelector() {
       renderOption={(option) => {
         const flagClass = flagMap[option.option.value];
         return (
-          <div className="flex items-center">
+          <div className="flex items-center text-gray-800 dark:text-gray-500">
             <span className={`${flagClass} mr-2`}></span>
             {option.option.label}
           </div>
